@@ -1,0 +1,90 @@
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: 2px solid #28B6AA;
+    color: #595858;
+}
+
+button:hover {
+    background-color: #28B6AA;
+    border: 2px solid #28B6AA;
+}
+
+.search-bar {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #595858;
+}
+
+.suggestions {
+    margin-top: 20px;
+}
+
+.suggestions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.suggestions li {
+    display: inline;
+    margin-right: 10px;
+    color: #28B6AA;
+    cursor: pointer;
+}
+
+.results {
+    margin-top: 20px;
+}
+
+.card {
+    border: 1px solid #F8F8F8;
+    background-color: #28B6AA;
+    color: #F8F8F8;
+}
+
+.next-appointment {
+    margin-top: 10px;
+    padding: 1.5em;
+    background-color: #fff;
+    color: #595858;
+    border: 1px solid #a2a1a1;
+}
+
+.next-appointment a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #28B6AA;
+    cursor: pointer;
+}
+
+.next-appointment a::after{
+    content: ">";
+}
+
+.next-appointment a:hover {
+    text-decoration: underline;
+}
