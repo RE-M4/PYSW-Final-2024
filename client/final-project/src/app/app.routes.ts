@@ -5,6 +5,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 export const routes: Routes = [
@@ -12,11 +14,13 @@ export const routes: Routes = [
     {path:'turno-registro',component: TurnoRegistroComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path:'header', component: HeaderComponent},
+    {path:'footer', component: FooterComponent},
     
 ];
 
-@NgModule({
+/*@NgModule({
     imports: [RouterModule.forRoot(routes)], 
     exports: [RouterModule] 
-})
+})*/
 export class AppRoutingModule { }

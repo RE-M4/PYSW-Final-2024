@@ -1,0 +1,20 @@
+.bgNav{
+    background-color: #28B6AA;
+}
+.text-color{
+    color:#28B6AA;
+    font-weight: bolder;
+}
+.bg-ul{
+    background-color: #28B6AA;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+}
+.a-esp{
+    text-decoration: none;
+    font-size: 1rem;
+}
