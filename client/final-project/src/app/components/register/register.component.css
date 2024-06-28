@@ -47,6 +47,7 @@ form div {
     border-left: none;
     border-right: none;
     border-bottom:2px solid #28B6AA;
+    border-radius:0;
 
     &:focus {
         outline: none;
@@ -85,5 +86,13 @@ form div {
 
     &:active {
         opacity: 0.9;
+    }
+}
+
+.form-select{
+    padding: 10px;
+    border:2px solid #28B6AA;
+    &:focus {
+        outline: none;
     }
 }
