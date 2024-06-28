@@ -1,0 +1,23 @@
+<div class="container mainLogin">
+    <div class="loginContainer">
+        <div>
+            <h2 class="text-center loginTitle">Bienvenido al hospital del Pilar</h2>
+        </div>
+        <form #formulario="ngForm" class="formLogin">
+
+            <div>
+                <label for="dni" class="form-label">DNI:</label>
+                <input type="text" id="dni" class="form-control" placeholder="41562685" aria-describedby="dni">
+            </div>
+
+            <div>
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" id="password" class="form-control" aria-describedby="password">
+            </div>
+
+        </form>
+
+        <button class="button" type="submit" id="btnSubmit">Iniciar Sesión</button>
+        <p class="text-center">¿No tenés cuenta? <a href="/register" class="formEnlace">Registrarme</a></p>
+    </div>
+</div>
