@@ -1,0 +1,53 @@
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.medico-info {
+    border: 2px solid #28B6AA;
+}
+
+.medico-info a, .turno-confirmar a{
+    color: #00bfa5;
+    text-decoration: none;
+}
+.medico-info a:hover,.turno-confirmar a:hover{
+    text-decoration: underline;
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.dia button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+
+.dia button.selected {
+    background-color: #00bfa5;
+    color: white;
+}
+
+.turno-confirmar {
+    margin-top: 20px;
+    border: 2px solid #28B6AA;
+    padding: 10px;
+}
+
+.confirmar {
+    background-color: #00bfa5;
+    color: white;
+}
+
+.confirmar:hover{
+    background: #EE4254;
+    transition: .5s;
+}
