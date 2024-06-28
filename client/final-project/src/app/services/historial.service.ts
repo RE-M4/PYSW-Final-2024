@@ -33,4 +33,20 @@ export class HistorialService {
     
     return this._http.post('http://localhost:3000/finalg5/historial', body, httpOptions);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 }

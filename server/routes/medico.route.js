@@ -6,9 +6,15 @@ const router = expreess.Router();
 //definimos las rutas 
 router.get('/', controlMedico.getMedico);
 router.post('/', controlMedico.createMedico);
-//router.get('/suma', controlll.getConverttt);
-//router.get('/emaill/:email', controlll.getBuscaEmail);  
-//router.get('/mOrigenn/:origen/mDestinoo/:destino', controlll.getBuscaM);  
+router.get('/id/:id', controlMedico.getMedicoById);
+router.get('/dni/:dni', controlMedico.getMedicoByDni);
+router.get('/matricula/:matricula', controlMedico.getMedicoByMatricula);
+router.get('/especialidad/:especialidad', controlMedico.getMedicoByEspecialidad);  
+router.get('/apellido/:apellido/especialidad/:especialidad', controlMedico.getMedicoByApellidoEspecialidad);  
+router.put('/id/:id',controlMedico.updateMedico );
+router.delete('/id/:id',controlMedico.deleteMedico );
+
 
 //exportamos el modulo de rutas
+
 module.exports = router;
