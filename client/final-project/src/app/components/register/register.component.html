@@ -4,38 +4,53 @@
             <h2 class="text-center registerTitle">Bienvenido al hospital del Pilar</h2>
         </div>
         <form #formulario="ngForm" class="formRegister">
-            <div>
+            <div class="form-group">
                 <label for="name" class="form-label">Nombre:</label>
-                <input type="text" id="name" class="form-control" placeholder="María" aria-describedby="name">
+                <input type="text" id="name" class="form-control" placeholder="ej. María" aria-describedby="name" name="name" autocomplete="off"
+                required #nombre="">
+                
             </div>
             
-            <div>
+            <div class="form-group">
                 <label for="lastName" class="form-label">Apellido:</label>
-                <input type="text" id="lastName" class="form-control" placeholder="Villalba" aria-describedby="lastName">
+                <input type="text" id="lastName" class="form-control" placeholder="ej. Villalba" aria-describedby="lastName" name="lastName" autocomplete="off"
+                required #lastName="">
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="dni" class="form-label">DNI:</label>
-                <input type="text" id="dni" class="form-control" placeholder="41562685" aria-describedby="dni">
+                <input type="text" id="dni" class="form-control" placeholder=" ej. 41562685" aria-describedby="dni" name="dni" autocomplete="off"
+                required #dni="">
             </div>
 
-            <div>
-                <label for="telphone" class="form-label">Teléfono:</label>
-                <input type="text" id="telphone" class="form-control" aria-describedby="telphone">
+            <div class="form-group">
+                <label for="contact" class="form-label">Tipo de contacto:</label>
+                <select id="contact" class="form-select" aria-describedby="contact">
+                    <option value="email">Email</option>
+                    <option value="phone">Teléfono</option>
+                    <option value="whatsapp">Whatsapp</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contactValue" class="form-label">Contacto:</label>
+                <input type="text" id="contactValue" class="form-control" placeholder="ej. 3885970702" aria-describedby="contactValue" name="contactValue" autocomplete="off"
+                required #contactValue="">
             </div>
             
-            <div>
+            <div class="form-group">
                 <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" id="password" class="form-control" aria-describedby="password">
+                <input type="password" id="password" class="form-control" placeholder="••••••••••••••••" aria-describedby="password" name="password" autocomplete="off"
+                required #password="">
             </div>
 
-            <div>
+            <div class="form-group">
                 <label for="rePassword" class="form-label">Repetir contraseña:</label>
-
-                <input type="password" id="rePassword" class="form-control" aria-describedby="rePassword">
+                <input type="password" id="rePassword" class="form-control" placeholder="••••••••••••••••" aria-describedby="rePassword" name="rePassword" autocomplete="off"
+                required #rePassword="">
             </div>
         </form>
         <button class="button" type="submit" id="btnSubmit">Registrarme</button>
-        <p class="text-center">¿Ya tenés cuenta? <a href="/login" class="formEnlace">Iniciar Sesión</a></p>
+        <p class="text-center">¿Ya tenés cuenta? <a [routerLink]="['/login']" routerLinkActive="active" class="formEnlace">Iniciar Sesión</a></p>
     </div>
 </div>
