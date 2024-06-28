@@ -1,0 +1,41 @@
+<div class="container mainRegister">
+    <div class="registerContainer">
+        <div>
+            <h2 class="text-center registerTitle">Bienvenido al hospital del Pilar</h2>
+        </div>
+        <form #formulario="ngForm" class="formRegister">
+            <div>
+                <label for="name" class="form-label">Nombre:</label>
+                <input type="text" id="name" class="form-control" placeholder="María" aria-describedby="name">
+            </div>
+            
+            <div>
+                <label for="lastName" class="form-label">Apellido:</label>
+                <input type="text" id="lastName" class="form-control" placeholder="Villalba" aria-describedby="lastName">
+            </div>
+
+            <div>
+                <label for="dni" class="form-label">DNI:</label>
+                <input type="text" id="dni" class="form-control" placeholder="41562685" aria-describedby="dni">
+            </div>
+
+            <div>
+                <label for="telphone" class="form-label">Teléfono:</label>
+                <input type="text" id="telphone" class="form-control" aria-describedby="telphone">
+            </div>
+            
+            <div>
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" id="password" class="form-control" aria-describedby="password">
+            </div>
+
+            <div>
+                <label for="rePassword" class="form-label">Repetir contraseña:</label>
+
+                <input type="password" id="rePassword" class="form-control" aria-describedby="rePassword">
+            </div>
+        </form>
+        <button class="button" type="submit" id="btnSubmit">Registrarme</button>
+        <p class="text-center">¿Ya tenés cuenta? <a href="/login" class="formEnlace">Iniciar Sesión</a></p>
+    </div>
+</div>
