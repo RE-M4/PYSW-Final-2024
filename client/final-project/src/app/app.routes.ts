@@ -7,6 +7,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NovedadComponent } from './components/novedad/novedad.component';
+import { NovedadFormComponent } from './components/novedad-form/novedad-form.component';
 
 
 export const routes: Routes = [
@@ -16,7 +18,8 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path:'header', component: HeaderComponent},
     {path:'footer', component: FooterComponent},
-    
+    {path:'novedades', component:NovedadComponent},
+    {path:'novedad-form', component:NovedadFormComponent}
 ];
 
 /*@NgModule({
