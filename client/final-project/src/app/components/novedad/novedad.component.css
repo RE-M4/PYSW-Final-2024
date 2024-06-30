@@ -1,0 +1,45 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.nav {
+    display: flex;
+    justify-content: center;
+}
+.nav button {
+    padding: 10px 20px;
+    margin: 0.5em;
+    border: 1px solid #00bfa5;
+    color: #4b4b4b;
+    font-weight: bold;
+}
+.nav button:hover, .nav button.active {
+    background-color: #00bfa5;
+    color: white;
+}
+.card{
+    padding: 1.5em;
+    margin: 0 auto;
+    width: 90vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.card img {
+    width: 100%;
+    object-fit: cover;
+}
+.card-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #4b4b4b;
+}
+.card span{
+    color: #757575;
+    font-size: small;
+    font-style: italic;
+}
+.card a {
+    color: #00bfa5;
+    text-decoration: none;
+}
+.card a:hover {
+    text-decoration: underline;
+}
