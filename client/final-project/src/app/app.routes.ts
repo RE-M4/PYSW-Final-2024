@@ -9,6 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NovedadComponent } from './components/novedad/novedad.component';
 import { NovedadFormComponent } from './components/novedad-form/novedad-form.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 export const routes: Routes = [
@@ -19,7 +20,8 @@ export const routes: Routes = [
     {path:'header', component: HeaderComponent},
     {path:'footer', component: FooterComponent},
     {path:'novedades', component:NovedadComponent},
-    {path:'novedad-form', component:NovedadFormComponent}
+    {path:'novedad-form', component:NovedadFormComponent},
+    {path:'home', component:HomeComponent}
 ];
 
 /*@NgModule({
