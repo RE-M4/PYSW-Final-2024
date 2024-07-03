@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NovedadComponent } from './components/novedad/novedad.component';
 import { NovedadFormComponent } from './components/novedad-form/novedad-form.component';
 import { HomeComponent } from './components/home/home.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 
 export const routes: Routes = [
@@ -21,7 +22,8 @@ export const routes: Routes = [
     {path:'footer', component: FooterComponent},
     {path:'novedades', component:NovedadComponent},
     {path:'novedad-form', component:NovedadFormComponent},
-    {path:'home', component:HomeComponent}
+    {path:'home', component:HomeComponent},
+    {path: "contact-form", component: ContactFormComponent},
 ];
 
 /*@NgModule({
