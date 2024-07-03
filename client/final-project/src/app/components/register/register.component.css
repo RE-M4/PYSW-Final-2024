@@ -39,6 +39,7 @@ form div {
 
 .form-label {
     font-size: 1rem;
+    font-weight: 650;
 }
 
 .form-control{
@@ -75,6 +76,7 @@ form div {
     padding: 10px;
     background-color:#28B6AA;
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
     border: none;
     color: white;
