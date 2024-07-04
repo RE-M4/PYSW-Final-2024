@@ -1,13 +1,14 @@
 //creamos el manejador de rutas
-const expreess = require('express');
-const controlHistorial = require('../controllers/historial.controller');
-const router= expreess.Router();
+const express = require('express');
+const historialCtrl = require('../controllers/historial.controller');
+const router= express.Router();
 //definimos las rutas 
-router.get('/', controlHistorial.getHistorial);
-router.post('/', controlHistorial.createHistorial);
-//router.get('/suma', controlll.getConverttt);
-//router.get('/emaill/:email', controlll.getBuscaEmail);  
-//router.get('/mOrigenn/:origen/mDestinoo/:destino', controlll.getBuscaM);  
+router.get('/', historialCtrl.getHistoriales);
+router.get('/:id', historialCtrl.getHistorialById);
+router.post('/', historialCtrl.createHistorial);
+router.put('/:id', historialCtrl.updateHistorial);
+router.delete('/:id', historialCtrl.deleteHistorial);
+
 
 //exportamos el modulo de rutas
 module.exports = router;

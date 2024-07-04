@@ -12,7 +12,7 @@ app.use(cors({origin: 'http://localhost:4200'})); //Se declara a Express que use
 //Routes
 app.use('/finalg5/medico', require('./routes/medico.route.js'));
 app.use('/finalg5/contacto', require('./routes/contacto.route.js'));
-app.use('/finalg5/historial', require('./routes/historial.route.js'));
+app.use('/finalg5/historiales', require('./routes/historial.route.js'));
 app.use('/finalg5/turno', require('./routes/turno.route.js'));
 app.use('/finalg5/paciente', require('./routes/paciente.route.js'));
 app.use('/finalg5/admin', require('./routes/admin.route.js'));
