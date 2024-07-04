@@ -1,0 +1,63 @@
+<div class="container mainRegister">
+    <div class="registerContainer">
+        <div>
+            <h2 class="text-center registerTitle">Formulario de registro</h2>
+        </div>
+        <form #formulario="ngForm" class="formRegister">
+            <div class="form-group">
+                <label for="name" class="form-label">Nombre:</label>
+                <input type="text" id="name" class="form-control" placeholder="ej. María" aria-describedby="name" name="name" autocomplete="off"
+                required #nombre="">
+                
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName" class="form-label">Apellido:</label>
+                <input type="text" id="lastName" class="form-control" placeholder="ej. Villalba" aria-describedby="lastName" name="lastName" autocomplete="off"
+                required #lastName="">
+            </div>
+
+            <div class="form-group">
+                <label for="dni" class="form-label">DNI:</label>
+                <input type="number" id="dni" class="form-control" placeholder=" ej. 41562685" aria-describedby="dni" name="dni" autocomplete="off"
+                required #dni="">
+            </div>
+
+            <div class="form-group">
+                <label for="matricula" class="form-label">Matricula:</label>
+                <input type="text" id="matricula" class="form-control" placeholder=" ej. Fj436261" aria-describedby="matricula" name="matricula" autocomplete="off"
+                required #matricula="">
+            </div>
+
+            <div class="form-group">
+                <label for="domicilio" class="form-label">Domicilio:</label>
+                <input type="text" id="domicilio" class="form-control" placeholder=" ej. Av. Balvin 236" aria-describedby="domicilio" name="domicilio" autocomplete="off"
+                required #domicilio="">
+            </div>
+
+            <div class="form-group">
+                <label for="especialidad" class="form-label">Especialidad:</label>
+                <input type="text" id="especialidad" class="form-control" placeholder=" ej. Cirujano" aria-describedby="especialidad" name="especialidad" autocomplete="off"
+                required #especialidad="">
+            </div>
+
+            <div class="form-group">
+                <label for="contact" class="form-label">Tipo de contacto:</label>
+                <select id="contact" class="form-select" aria-describedby="contact">
+                    <option value="email">Email</option>
+                    <option value="phone">Teléfono</option>
+                    <option value="whatsapp">Whatsapp</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contactValue" class="form-label">Contacto:</label>
+                <input type="text" id="contactValue" class="form-control" placeholder="ej. 3885970702" aria-describedby="contactValue" name="contactValue" autocomplete="off"
+                required #contactValue="">
+            </div>
+            
+        </form>
+        <button class="button" type="submit" id="btnSubmit">Registrar</button>
+    </div>
+</div>
+

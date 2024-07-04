@@ -11,6 +11,7 @@ import { NovedadComponent } from './components/novedad/novedad.component';
 import { NovedadFormComponent } from './components/novedad-form/novedad-form.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { MedicoFormComponent } from './components/medico-form/medico-form.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
     {path:'novedad-form', component:NovedadFormComponent},
     {path:'home', component:HomeComponent},
     {path: "contact-form", component: ContactFormComponent},
+    {path: "medico-form", component: MedicoFormComponent}
 ];
 
 /*@NgModule({

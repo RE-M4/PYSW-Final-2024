@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mainRegister{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.registerContainer{
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    border-radius: 15px;
+    border: 3px solid #28B6AA;
+}
+
+.registerTitle{
+    margin-bottom: 28px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+
+
+form div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 1rem;
+    font-weight: 650;
+}
+
+.form-control{
+    padding: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom:2px solid #28B6AA;
+    border-radius:0;
+
+    &:focus {
+        outline: none;
+    }
+
+}
+
+.registerContainer p {
+    margin: 20px 0;
+}
+
+.formEnlace {
+    text-decoration: none;
+    color: #28B6AA;
+    ;
+
+    &:hover {
+        color: #5e6565;
+    }
+}
+
+.button{
+    border-radius: 8px;
+    padding-block: 8px;
+    padding: 10px;
+    background-color:#28B6AA;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    color: white;
+    width: 100%;
+    &:hover {
+        opacity: 0.7;
+    }
+
+
+    &:active {
+        opacity: 0.9;
+    }
+}
+
+.form-select{
+    padding: 10px;
+    border:2px solid #28B6AA;
+    &:focus {
+        outline: none;
+    }
+}
