@@ -1,13 +1,14 @@
 //creamos el manejador de rutas
 const expreess = require('express');
-const controlAdmin = require('../controllers/admin.controller');
+const administrativoCtrl = require('../controllers/admin.controller');
 const router = expreess.Router();
 //definimos las rutas 
-router.get('/', controlAdmin.getAdmin);
-router.post('/', controlAdmin.createAdmin);
-//router.get('/suma', controlll.getConverttt);
-//router.get('/emaill/:email', controlll.getBuscaEmail);  
-//router.get('/mOrigenn/:origen/mDestinoo/:destino', controlll.getBuscaM);  
+router.get('/', administrativoCtrl.getAdmins); 
+router.get('/fecha', administrativoCtrl.getAdminsByDate); 
+router.post('/', administrativoCtrl.createAdmin); 
+router.put('/:id', administrativoCtrl.updateAdmin);
+router.delete('/:id', administrativoCtrl.deleteAdmin); 
+router.get('/:dni', administrativoCtrl.getAdminByDni);
 
 //exportamos el modulo de rutas
 module.exports = router;
