@@ -19,14 +19,39 @@ historialCtrl.getHistoriales = async (req, res) => {
         filter.estado = estado;
     }
 
-    var historiales = await Historial.find(filter).populate('medico');
+    var historiales = await Historial.find(filter).populate('medico paciente');
     res.status(200).json(historiales);
 }
+// Obtener todos los historiales de un paciente
+historialCtrl.getHistorialByPaciente = async (req, res) => {
+    try {
+        const historiales = await Historial.find({ paciente: req.params.pacienteId }).populate('medico paciente');
+        res.status(200).json(historiales);
+    } catch (error) {
+        res.status(400).json({
+            'status': '0',
+            'msg': 'Error_Al_buscar_Historial.'
+        });
+    }
+};
+
+// Obtener los historiales de los pacientes de un médico
+historialCtrl.getHistorialByMedico = async (req, res) => {
+    try {
+        const historiales = await Historial.find({ medico: req.params.medicoId }).populate('medico paciente');
+        res.status(200).json(historiales);
+    } catch (error) {
+        res.status(400).json({
+            'status': '0',
+            'msg': 'Error_Al_buscar_Historial.'
+        });
+    }
+};
 
 //Obtener un historial segun el ID
 historialCtrl.getHistorialById = async (req, res) => {
     try {
-        var historial = await Historial.findById(req.params.id).populate('medico');
+        var historial = await Historial.findById(req.params.id).populate('medico paciente');
         res.status(200).json(historial);
     } catch (error) {
         res.status(400).json({
