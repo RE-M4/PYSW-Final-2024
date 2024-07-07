@@ -1,6 +1,6 @@
 
 
-import { Contacto } from '../models/contacto';
+import { Contacto } from './contacto';
 
 export class Administra {
 
