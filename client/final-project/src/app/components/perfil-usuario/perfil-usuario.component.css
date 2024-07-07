@@ -1,0 +1,50 @@
+.user-info{
+    margin-top: 2rem;
+}
+
+.user-panel{
+    border: 1px solid #28B6AA;
+    width: 60%;
+}
+
+.separador{
+    border-bottom: 1px solid #28B6AA;
+}
+
+.button-profile{
+    margin-top: 8px;
+    border-radius: 8px;
+    padding-block: 8px;
+    background-color:#28B6AA;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    color: white;
+    &:hover {
+        opacity: 0.7;
+    }
+
+
+    &:active {
+        opacity: 0.9;
+    }
+}
+
+.user-turnos{
+    margin-top: 2rem;
+}
+
+.enlace-turno{
+    text-decoration: none;
+    color: #28B6AA;
+    ;
+
+    &:hover {
+        color: #5e6565;
+    }
+}
+
+.user-historial{
+    margin-top: 2rem;
+}

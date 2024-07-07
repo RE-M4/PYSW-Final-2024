@@ -1,0 +1,76 @@
+<div class="container">
+    <h2>Bienvenido Agustin!</h2>
+    <div class="row">
+        <div class="user-info col-12">
+            <h5>Informacion de usuario</h5>
+            <div class="user-panel row shadow">
+                <div class="col-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item separador"><strong>Nombre: </strong> Agustin</li>
+                        <li class="list-group-item separador"><strong>Apellido:</strong> Cresat</li>
+                        <li class="list-group-item"><strong>Telefono:</strong> 15425332</li>
+                    </ul>
+                </div>
+                <div class="col-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item separador"><strong>DNI:</strong> 52125332</li>
+                        <li class="list-group-item separador"><strong>Domicilio:</strong> Av. fitgerald 235</li>
+                        <li class="list-group-item"><strong>Mail:</strong> - </li>
+                    </ul>
+                </div>
+            </div>
+            <button type="button" class="btn button-profile">Editar datos</button>
+        </div>
+        <div class="user-turnos col-12">
+            <h5>Turnos</h5>
+            <div>
+                <p>Si necesitas asignar un nuevo turno ve a <a [routerLink]="['/turno-registro']"
+                        class="enlace-turno">seccion de turnos</a>.</p>
+            </div>
+            <div class="row g-4">
+                <div class="card col-12 col-md-6 col-xl-4 " *ngFor="let usu of usuarios">
+                    <div class="card-header bg-transparent">Fecha: {{usu.fecha}} - Horario: {{usu.hora}}</div>
+                    <div class="card-body">
+                        <p class="card-text  separador">Dr/a: {{usu.medico}}</p>
+                        <p class="card-text separador">Paciente: {{usu.paciente}}</p>
+                        <p class="card-text separador">Enfermedad: {{usu.enfermedad}}</p>
+                        <p class="card-text separador">Sala: {{usu.sala}}</p>
+                        <p class="card-text ">pagado: {{usu.pagado}}</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-body-secondary">Estado: {{usu.estado}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user-historial col-12">
+            <h5>Historial</h5>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Tratamiento</th>
+                            <th scope="col">Médico</th>
+                            <th scope="col">Fecha Inicio</th>
+                            <th scope="col">Fecha Finalización</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
