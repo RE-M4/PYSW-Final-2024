@@ -1,0 +1,48 @@
+.items__section {
+    padding: 1rem;
+
+    &>.items__article {
+        overflow-x: auto;
+        border-radius: 10px;
+    }
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 800px;
+    
+    & th,
+    td {
+        text-align: center;
+        padding: 0.5rem;
+    }
+
+    & th {
+        background-color:#28B6AA;
+        color: #ffffff;
+    }
+
+    & .td__image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    & .td__actions{
+        & .button + .button {
+            margin-left: 0.5rem;
+        }
+    }
+}
+
+form label {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.decline{
+    background-color: #FF0000;
+    color: #ffffff;
+}

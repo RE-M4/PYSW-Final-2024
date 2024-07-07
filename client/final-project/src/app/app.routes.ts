@@ -13,7 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { MedicoFormComponent } from './components/medico-form/medico-form.component';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export const routes: Routes = [
     {path:'cartilla-medica', component: CartillaMedicaComponent},
@@ -27,7 +27,9 @@ export const routes: Routes = [
     {path:'home', component:HomeComponent},
     {path: "contact-form", component: ContactFormComponent},
     {path: "medico-form", component: MedicoFormComponent},
-    {path: "perfil-usuario", component: PerfilUsuarioComponent}
+    {path: "perfil-usuario", component: PerfilUsuarioComponent},
+    {path:'dashboard', component:DashboardComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 /*@NgModule({

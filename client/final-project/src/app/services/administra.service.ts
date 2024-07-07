@@ -10,27 +10,58 @@ export class AdministraService {
 
   constructor(private _http: HttpClient) { }
 
+  //CRUD
 
-  public getAdministra(): Observable<any> {
+   //obtener todos los administrativos
+  getAdmins(): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json' 
-      }),
+        'Content-Type': 'application/json'
+      })
     }
-    return this._http.get('http://localhost:3000/finalg5/admin',httpOptions);
+    return this._http.get('http://localhost:3000/finalg5/administrativo', httpOptions);
+  };
 
-  }
-
-  public postAdministra(adminn: Administra): Observable<any> {
-
+  //obtener admin por dni
+  getAdminDni(dni: any): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json' 
-      }),
+        'Content-Type': 'application/json'
+      })
     }
-         
-      let body:any = JSON.stringify(adminn);
-    
-    return this._http.post('http://localhost:3000/finalg5/admin', body, httpOptions);
-  }
+    return this._http.get('http://localhost:3000/finalg5/administrativo/' + dni, httpOptions);
+  };
+
+  //crear admin
+  createAdmin(admin: Administra): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    let body = JSON.stringify(admin); //pasar a JSON el objeto
+    return this._http.post('http://localhost:3000/finalg5/administrativo', body, httpOptions);
+  };
+
+  //editar admin
+  updateAdmin(admin: Administra): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    let body = JSON.stringify(admin); //pasar a JSON el objeto
+    return this._http.put('http://localhost:3000/finalg5/administrativo/' + admin._id, body, httpOptions);
+  };
+
+  //eliminar admin
+  deleteAdmin(id: any): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this._http.delete('http://localhost:3000/finalg5/administrativo/' + id, httpOptions);
+  };
+
 }
