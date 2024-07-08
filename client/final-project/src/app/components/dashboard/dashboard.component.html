@@ -20,45 +20,68 @@
     <h2>Acciones</h2>
     <article>
         <form>
-            <label for='searchAdmin' class="m-1">Administradores(16)</label>
-            <input type='text' id='searchAdmin' class="m-1 rounded-2 p-1" name='searchAdmin' placeholder='ej. 415626885'>
-            <button class='btn btn-primary m-1'>Buscar</button>
+            <label for='searchAdmin' class="m-1">Administradores({{admins.length}})</label>
+            <input type='text' id='searchAdmin' class="m-1 rounded-2 p-1" name='searchAdmin' placeholder='ej. 415626885' [(ngModel)]="dniAdmin">
+            <button type="button" class='btn btn-primary m-1' (click)="obtenerAdminByDni(dniAdmin)" data-bs-toggle="modal" data-bs-target="#exampleModal">Buscar</button>
         </form>
     </article>
+    <article>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="admin">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h2 class="modal-title fs-5" id="exampleModalLabel">{{admin.nombre}} {{admin.apellido}}</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Dni: {{admin.dni}}</p>
+                    <p>Contactos: {{admin.contactos}}</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Ver más</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </article>
 </section>
-<section class='items__section'>
+<section class='items__section' *ngIf="admins.length!=0">
     <article class='items__article'>
-            <!-- <h1>No hay pacientes</h1>  -->
             <table class='table'>
                 <thead>
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>DNI</th>
-                        <th>Domicilio</th>
+                        <th>Contactos</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                            <tr>
-                                <td>Sofia</td>
-                                <td>Yañez</td>
-                                <td>41562685</td>
-                                <td>Calle Bustamante 260</td> 
-                                <td class='td__actions'>
-                                    <a class='btn btn-primary' href=''>Ver más</a>
-                                </td>
-                            </tr>
+                        <tr *ngFor="let adm of admins">
+                            <td>{{adm.nombre}}</td>
+                            <td>{{adm.apellido}}</td>
+                            <td>{{adm.dni}}</td>
+                            <td>{{adm.contactos}}</td> 
+                            <td class='td__actions'>
+                                <a class='btn btn-primary' [routerLink]="['perfil-usuario']" routerLinkActive="active">Ver más</a>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
     </article>
+    <article *ngIf="admins.length==0" class="mt-3">
+        <h3 class="text-center" style="color: #ff4500;">Aun no hay administradores</h3>
+    </article>
 </section>
+
 
 <section class="m-3">
     <article>
         
         <form>
-            <label for='searchPatient' class="m-1">Pacientes(8)</label>
+            <label for='searchPatient' class="m-1">Pacientes()</label>
             <input type='text' class="m-1 rounded-2 p-1" id='searchPatient' name='searchPatient' placeholder='ej. 415626885'>
             <button class='btn btn-primary m-1'>Buscar</button>
         </form>
@@ -74,7 +97,7 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>DNI</th>
-                        <th>Domicilio</th>
+                        <th>Contactos</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -85,7 +108,7 @@
                                 <td>41562685</td>
                                 <td>Calle Bustamante 260</td> 
                                 <td class='td__actions'>
-                                    <a class='btn btn-primary' href=''>Ver más</a>
+                                    <a class='btn btn-primary' [routerLink]="['perfil-usuario']">Ver más</a>
                                 </td>
                             </tr>
                 </tbody>
@@ -96,7 +119,7 @@
 <section class="m-3">
     <article>
         <form>
-            <label for='searchDoctor' class="m-1">Medicos(16)</label>
+            <label for='searchDoctor' class="m-1">Medicos()</label>
             <input type='text' id='searchDoctor' class="m-1 rounded-2 p-1" name='searchDoctor' placeholder='ej. 415626885'>
             <button class='btn btn-primary m-1'>Buscar</button>
         </form>
@@ -112,7 +135,7 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>DNI</th>
-                        <th>Domicilio</th>
+                        <th>Contactos</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -123,7 +146,7 @@
                                 <td>41562685</td>
                                 <td>Calle Bustamante 260</td> 
                                 <td class='td__actions'>
-                                    <a class='btn btn-primary' href=''>Ver más</a>
+                                    <a class='btn btn-primary' [routerLink]="['perfil-usuario']">Ver más</a>
                                 </td>
                             </tr>
                 </tbody>

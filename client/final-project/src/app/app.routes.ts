@@ -32,8 +32,8 @@ export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
-/*@NgModule({
+@NgModule({
     imports: [RouterModule.forRoot(routes)], 
     exports: [RouterModule] 
-})*/
+})
 export class AppRoutingModule { }
