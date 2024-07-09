@@ -1,5 +1,5 @@
 export class Contacto {
-
+/*
     _id!:string;
     tipo:String;
     valor:String;    
@@ -9,7 +9,7 @@ export class Contacto {
         this.valor="";
     }
 
-
+*/
 
     
 

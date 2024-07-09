@@ -3,7 +3,7 @@
 import { Contacto } from '../models/contacto';
 
 export class Administra {
-
+  /*
     _id!: string;
     apellido: String;
     nombre: String;
@@ -26,7 +26,7 @@ export class Administra {
         this.password = "";
 
 
-    }
+    }  */
 
 
 

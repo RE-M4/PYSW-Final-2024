@@ -2,7 +2,7 @@
 import { Medico } from '../models/medico';
 
 export class Historial {
-
+/*
     _id!:string;
     titulo:String;
     descripcion:String;    
@@ -22,5 +22,6 @@ export class Historial {
         this.titulo = "";
         this.medico = new Medico();
     }
+        */
 
 }

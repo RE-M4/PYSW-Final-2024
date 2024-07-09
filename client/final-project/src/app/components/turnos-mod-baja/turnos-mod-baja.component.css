@@ -1,0 +1,326 @@
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+
+
+@media screen and  (max-width:540px) {
+    .fondo11 { background-color: #900fe6; 
+      color: rgb(243, 242, 247);
+      text-shadow: 0.1em 0.1em 0.2em rgb(1, 10, 12);
+    }
+    .articc {background-color: #f13426;}
+}
+
+
+@media screen and (min-width:541px) and  (max-width:720px) {
+    .fondo11 { background-color: #2451e4; 
+      color: rgb(243, 242, 247);
+      text-shadow: 0.1em 0.1em 0.2em rgb(1, 10, 12);
+    }
+    .articc {background-color: #3fc233;}
+}
+
+
+  @media screen and (min-width:721px) and (max-width:960px) {
+    .fondo11 { background-color: #1fb811; 
+      color: rgb(243, 242, 247);
+      text-shadow: 0.1em 0.1em 0.2em rgb(1, 10, 12);
+    }
+    .articc {background-color: #3e56c4;}
+  }
+
+
+  @media screen and (min-width:961px) {      
+    .fondo11 { background-color: #10c7e7; 
+      color: rgb(243, 242, 247);
+      text-shadow: 0.1em 0.1em 0.2em rgb(1, 10, 12);
+    }
+   .articc {background-color: #4d0885;}
+  }
+ 
+/* /////////////////////////////////////////////////////////////////*/
+.row-selected {
+  background-color: #128108; /* Color de fondo azul claro */
+  color: rgb(221, 233, 61);
+}
+
+.cell-selected {
+  background-color: #09853d; /* Color de fondo azul claro */
+ }
+
+ .text-yellow { background-color: #0e21d1;
+  color: rgb(221, 233, 61);
+ }
+ .text-alertta { background-color: #f08521;
+  color: rgb(14, 37, 114);
+ }
+
+/* /////////////////////////////////////////////////////////////////*/
+.fecha44{
+  border-radius: 15px;
+  border: 2px solid rgb(1, 1, 19);
+  background-color: #0b0353;
+  font-size: 17px;
+  font-style: italic;
+  color: rgb(211, 241, 89);
+  text-align: center;
+} 
+ 
+/* /////////////////////////////////////////////////////////////////*/
+
+.muestra079{
+  border-radius: 15px;
+  border: 2px solid rgb(1, 1, 19);
+  background-color: #0b0353;
+  font-size: 14px;
+  font-style: italic;
+  color: rgb(240, 229, 85);
+  text-align: center;
+
+} 
+ 
+/* /////////////////////////////////////////////////////////////////*/
+.bordes-tabla { 
+  border-collapse: collapse;
+  width: 100%; /* Ajusta el ancho de la tabla según sea necesario */
+  border-radius: 15px; /* Redondea las esquinas de la tabla */
+   overflow: hidden; /* Asegura que el borde redondeado sea visible */
+   box-shadow: 0px 0px 15px 7px rgb(8, 167, 30);
+   text-shadow: 0.1em 0.1em 0.2em rgb(59, 216, 236);
+   text-align: center;
+}
+
+.bordes-tabla th { 
+  background-color: lightblue; /* Color de fondo celeste para los encabezados */
+  border: 3px solid black;
+  padding: 10px;
+  font-weight: bold; /* Aplica negrita al texto dentro de los encabezados */
+}
+
+.bordes-tabla td {  font-style: italic;
+  border: 3px solid black;
+  padding: 2px;
+}
+
+/* /////////////////////////////////////////////////////////////////*/
+
+.tit33{
+  border-radius: 15px;
+  border: 2px solid rgb(1, 1, 19);
+  background-color: #0b0353;
+  font-size: 22px;
+  font-style: italic;
+  color: rgb(68, 214, 63);
+  text-align: center;
+} 
+ 
+/* /////////////////////////////////////////////////////////////////*/
+.textoSelect{
+  border-radius: 15px;
+  border: 2px solid rgb(1, 1, 19);
+  background-color: #a1f5cb;
+  font-size: 16px;
+ /* font-family: "Times New Roman", Times, serif; */
+  font-style:  italic;
+  color: rgb(4, 1, 19);
+  text-shadow: 0.1em 0.1em 0.2em rgb(45, 183, 224);
+  text-align: center;
+} 
+/* /////////////////////////////////////////////////////////////////*/
+  .textoo{
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+    background-color: #0b0353;
+    font-size: 17px;
+    font-style: italic;
+    color: rgb(238, 241, 57);
+    box-shadow: 0px 0px 15px 7px rgb(233, 230, 57);
+    text-shadow: 0.1em 0.1em 0.2em black;
+    text-align: center;
+  } 
+   
+/* /////////////////////////////////////////////////////////////////*/
+
+.textoo7{
+  border-radius: 15px;
+  border: 2px solid rgb(1, 1, 19);
+  background-color: #0b0353;
+  font-size: 27px;
+  font-style: italic;
+  color: rgb(231, 235, 20);
+  box-shadow: 0px 0px 15px 7px rgb(233, 230, 57);
+  text-shadow: 0.1em 0.1em 0.2em black;
+  text-align: center;
+} 
+/* /////////////////////////////////////////////////////////////////*/
+.ffondo111{  
+  color: rgb(243, 242, 247);
+  text-shadow: 0.1em 0.1em 0.2em rgb(1, 10, 12);
+  font-size: 1.4em;
+  justify-content: center;
+  text-align: center;
+  font-style: italic;
+}
+/* /////////////////////////////////////////////////////////////////*/
+.fondo11{  font-size: 1.4em;
+    border-radius: 15px;
+    border: 2px solid rgb(2, 2, 95);
+    justify-content: center;
+    text-align: center;
+    font-style: italic;
+}
+
+.cartel11{  background-color: #927dee;
+    color: rgb(0, 1, 7);
+    font-size:  1.2em;
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+}
+
+
+/* /////////////////////////////////////////////////////////////////*/
+.formulario2 {  text-align: center;
+  font-style: italic;
+  border-radius: 15px;
+  font-size: 17px;
+  font-style: italic;
+  background-color: #0fb4b9;
+  text-shadow: 0.1em 0.1em 0.2em rgb(1, 2, 12);
+  color: rgb(248, 252, 6);
+  margin-right: 20px; /* Espacio entre los formularios */
+}
+/* /////////////////////////////////////////////////////////////////*/
+.contenedor-formularios {
+  display: flex;
+}
+
+.formulario {  font-style: italic;
+  font-size: 17px;
+  border-radius: 15px;
+  background-color: #0fb4b9;
+  text-shadow: 0.1em 0.1em 0.2em rgb(10, 24, 216);
+  color: rgb(251, 252, 249);
+  margin-right: 20px; /* Espacio entre los formularios */
+}
+
+.grupo-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Espacio entre cada grupo de input */
+}
+
+.grupo-input label {
+  min-width: 150px; /* Ancho mínimo para etiquetas */
+  text-align: right; /* Alinea el texto de la etiqueta a la derecha */
+  padding-right: 10px; /* Espacio adicional a la derecha de la etiqueta */
+}
+
+ 
+
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+
+.headerr11{  background-color: #304ceb;
+    color: rgb(4, 7, 41);
+    font-size: 1.2em;
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+}
+
+.headerr22{  background-color: #e2ee3a;
+    color: rgb(4, 7, 41);
+    font-size: 1.2em;
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+}
+.headerr33{  background-color: #994fa0;
+    color: rgb(4, 7, 41);
+    font-size: 1.2em;
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+}
+
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+ .articc { color: #ffffff;
+    font-size: 1.2em;
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+    justify-content: center;
+    text-align: center;
+ }
+
+
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* 
+nav{
+    background-color: #a1eb9a;
+    font-size: 1.1em;
+    border-radius: 15px;
+    border: 2px solid rgb(5, 88, 33);
+    box-shadow: 0px 0px 10px 8px rgb(232, 243, 71);
+    text-shadow: 0.1em 0.1em 0.2em black;
+}*/
+
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+   .letraa{
+    font-size: 15px;
+    font-style: italic;
+    font-family:'Times New Roman', Times, serif;
+   }
+   
+
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+
+.textoo2{
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+    background-color: #0b0353;
+    font-size: 20px;
+    font-style: italic;
+    color: aliceblue;
+    box-shadow: 0px 0px 10px 4px rgb(228, 231, 36);
+    text-shadow: 0.1em 0.1em 0.2em black;
+    text-align: center;
+  } 
+   
+
+  .textoo3{
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+    background-color: #087535;
+    font-size: 20px;
+    font-style: italic;
+    color: aliceblue;
+    box-shadow: 0px 0px 10px 4px rgb(221, 185, 65);
+    text-shadow: 0.1em 0.1em 0.2em black;
+    text-align: center;
+  } 
+
+  .textoo4{
+    border-radius: 15px;
+    border: 2px solid rgb(1, 1, 19);
+    background-color: #d6b9da;
+    font-size: 15px;
+    font-style: italic;
+    color: rgb(1, 8, 14);
+    box-shadow: 0px 0px 10px 4px rgb(231, 228, 42);
+    text-shadow: 0.1em 0.1em 0.2em black;
+    text-align: center;
+  } 
+
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/
+/* /////////////////////////////////////////////////////////////////*/

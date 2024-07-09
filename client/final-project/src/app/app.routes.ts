@@ -11,6 +11,9 @@ import { NovedadComponent } from './components/novedad/novedad.component';
 import { NovedadFormComponent } from './components/novedad-form/novedad-form.component';
 import { HomeComponent } from './components/home/home.component';
 
+import { TurnosAltasComponent } from './components/turnos-altas/turnos-altas.component';
+import { TurnosModBajaComponent } from './components/turnos-mod-baja/turnos-mod-baja.component';
+
 
 export const routes: Routes = [
     {path:'cartilla-medica', component: CartillaMedicaComponent},
@@ -21,11 +24,17 @@ export const routes: Routes = [
     {path:'footer', component: FooterComponent},
     {path:'novedades', component:NovedadComponent},
     {path:'novedad-form', component:NovedadFormComponent},
-    {path:'home', component:HomeComponent}
+    
+    {path: 'Altaturnos',  component: TurnosAltasComponent, },
+    {path: 'modibajaturnos',  component: TurnosModBajaComponent, },
+    {path:'home', component:HomeComponent},
+
+   // { path: '**', pathMatch:'full',redirectTo:'home' }  //CUANDO SEA INCORRECTA LA DIRECCION SE ELIJE HOME POR DEFECTO
 ];
+
 
 /*@NgModule({
     imports: [RouterModule.forRoot(routes)], 
     exports: [RouterModule] 
 })*/
-export class AppRoutingModule { }
+// export class AppRoutingModule { }

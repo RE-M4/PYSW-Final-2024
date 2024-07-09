@@ -8,6 +8,7 @@ export class Paciente {
     nombre:String;
     dni:Number;
     domicilio:String;
+    fechaingreso:Date;
     contactos: Array<Contacto>;
     historia: Array<Historial>;    
 
@@ -18,6 +19,7 @@ export class Paciente {
       this.nombre = "";
       this.dni = 0;
       this.domicilio = "";
+      this.fechaingreso = new Date();
 
 
     }

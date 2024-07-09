@@ -8,7 +8,7 @@ const HistorialSchema = new Schema({
     medico: {type: Schema.Types.ObjectId, ref: Medico, required: true},
     fecha_Inicio : {type:Date, required: true},
     fecha_Fin : {type:Date, required: true},
-    estado: {type:String, required: true},
+    //estado: {type:String, required: true},
   
     
 })

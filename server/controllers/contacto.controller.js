@@ -24,4 +24,18 @@ controlCont.createContacto = async (req, res) => {
     }
 }
 
+/*
+//busca contacto por id
+controlCont.getContactoById = async (req, res) => {
+    try {
+        var contacto = await Contacto.findById(req.params.id);
+        if(!contacto) return res.status(404).json({msg: 'Contacto no encontrado'});
+        res.json(contacto);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({msg: 'Error getContactoById'});
+    }
+} 
+    */
+
 module.exports = controlCont;

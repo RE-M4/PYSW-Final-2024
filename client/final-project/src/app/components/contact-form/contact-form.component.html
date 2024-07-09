@@ -1,0 +1,48 @@
+<div class="container mainContactForm">
+    <div class="contactFormContainer">
+        <div>
+            <h2 class="text-center contactFormTitle">Contáctate con nosotros!</h2>
+        </div>
+        <form #formulario="ngForm" class="ContactForm">
+
+            <div class="form-group">
+                <label for="name" class="form-label">Nombre:</label>
+                <input type="text" id="name" class="form-control" placeholder="ej. María" aria-describedby="name" name="name" autocomplete="off"
+                required #nombre="">    
+            </div>
+
+            <div class="form-group">
+                <label for="lastName" class="form-label">Apellido:</label>
+                <input type="text" id="lastName" class="form-control" placeholder="ej. Villalba" aria-describedby="lastName" name="lastName" autocomplete="off"
+                required #lastName="">
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Correo Electrónico:</label>
+                <input type="email" id="email" class="form-control" placeholder="ej. abrilyanez@mail.com" aria-describedby="email" name="email" autocomplete="off"
+                required #email="">
+            </div>
+
+            <div class="form-group">
+                <label for="phone" class="form-label">Teléfono:</label>
+                <input type="text" id="phone" class="form-control" placeholder="ej. 3885970702" aria-describedby="phone" name="phone" autocomplete="off"
+                required #phone="">
+            </div>
+
+            <div class="form-group">
+                <label for="subject" class="form-label">Asunto:</label>
+                <input type="text" id="subject" class="form-control" placeholder="ej. Consulta" aria-describedby="subject" name="subject" autocomplete="off"
+                required #subject="">
+            </div>
+
+            <div class="form-group">
+                <label for="message" class="form-label">Mensaje:</label>
+                <textarea id="message" class="form-control" placeholder="Escriba su mensaje aquí" aria-describedby="message" name="message" autocomplete="off"
+                required #message=""></textarea>
+            </div>
+
+        </form>
+
+        <button class="button" type="submit" id="btnSubmit">Enviar</button>
+    </div>
+</div>

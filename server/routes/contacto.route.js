@@ -5,9 +5,8 @@ const router = expreess.Router();
 //definimos las rutas 
 router.get('/', controlCont.getContacto);
 router.post('/', controlCont.createContacto);
-//router.get('/suma', controlll.getConverttt);
-//router.get('/emaill/:email', controlll.getBuscaEmail);  
-//router.get('/mOrigenn/:origen/mDestinoo/:destino', controlll.getBuscaM);  
+//router.get('/id/:id', controlCont.getContactoById);
+
 
 //exportamos el modulo de rutas
 module.exports = router;
