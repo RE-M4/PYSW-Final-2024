@@ -8,7 +8,7 @@ const PacienteSchema = new Schema({
     dni : {type:Number, required:true},
     domicilio : {type:String, required: true},
     contactos: {type: Schema.Types.Array, ref: Contacto, required: true},
-    historia: {type: Schema.Types.Array, ref: Historial, required: true}
+    historia: {type: Schema.Types.Array, ref: 'Historial', required: true}
    
     
 })
