@@ -33,6 +33,7 @@ controlTurno.getTurnoById = async (req, res) => {
     }
 }
 
+<<<<<<< HEAD
 
 
 controlTurno.getTurnoByDateMayoresDescendente = async (req, res) => {
@@ -51,6 +52,26 @@ controlTurno.getTurnoByDateMayoresDescendente = async (req, res) => {
 controlTurno.getTurnoByState = async (req, res) => {
     try {
         var turnos = await Turno.find({estado: req.params.estado}).sort({ fechaturno: -1 });
+=======
+//busca por fecha
+
+controlTurno.getTurnoByDate = async (req, res) => {
+    try {
+        var turnos = await Turno.find({fechaturno: req.params.fechaturno});
+        if(!turnos) return res.status(404).json({msg: 'No hay turnos para esa fecha'});
+        res.json(turnos);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({msg: 'Error buscar turnos por fecha'});
+    }
+}
+
+//busca por estado
+
+controlTurno.getTurnoByState = async (req, res) => {
+    try {
+        var turnos = await Turno.find({estado: req.params.estado});
+>>>>>>> 75fb01ca67f8c826d67ee5c422610461ea9874f7
         if(!turnos) return res.status(404).json({msg: 'No hay turnos con ese estado'});
         res.json(turnos);
     } catch (error) {
@@ -60,9 +81,16 @@ controlTurno.getTurnoByState = async (req, res) => {
 }
 
 //busca por _id del Medico
+<<<<<<< HEAD
 controlTurno.getTurnoByMedico = async (req, res) => {
     try {
         var turnos = await Turno.find({medico: req.params.medico}).sort({ fechaturno: -1 });
+=======
+
+controlTurno.getTurnoByMedico = async (req, res) => {
+    try {
+        var turnos = await Turno.find({medico: req.params.medico});
+>>>>>>> 75fb01ca67f8c826d67ee5c422610461ea9874f7
         if(!turnos) return res.status(404).json({msg: 'No hay turnos para este medico'});
         res.json(turnos);
     } catch (error) {
@@ -71,6 +99,7 @@ controlTurno.getTurnoByMedico = async (req, res) => {
     }
 }
 
+<<<<<<< HEAD
 //busca por paciente
 controlTurno.getTurnoByPaciente = async (req, res) => {
     try {
@@ -253,4 +282,17 @@ controlTurno.getAllTurnos = async (req, res) => {
     }
 }
 
+=======
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 75fb01ca67f8c826d67ee5c422610461ea9874f7
 module.exports = controlTurno;

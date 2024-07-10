@@ -22,6 +22,7 @@ export class MedicoService {
   }
 
 
+
   public postMedico(med: Medico): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({

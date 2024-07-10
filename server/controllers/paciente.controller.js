@@ -23,7 +23,10 @@ controlPaciente.createPaciente = async (req, res) => {
     }
 }
 
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> 75fb01ca67f8c826d67ee5c422610461ea9874f7
 //buscar por _id
 
 controlPaciente.getPacienteById = async (req, res) => {
@@ -57,7 +60,11 @@ controlPaciente.getPacienteByDni = async (req, res) => {
 controlPaciente.getPacienteByApellido = async (req, res) => {
     try {
         var pacientes = await Paciente.find({apellido: req.params.apellido});
+<<<<<<< HEAD
         if(!pacientes) return res.status(404).json({msg: 'Pacientes no encontrados con ese Apellido'});
+=======
+        if(!pacientes) return res.status(404).json({msg: 'Pacientes no encontrados'});
+>>>>>>> 75fb01ca67f8c826d67ee5c422610461ea9874f7
         res.json(pacientes);
     } catch (error) {
         console.log(error);
@@ -105,6 +112,7 @@ controlPaciente.deletePaciente = async (req, res) => {
 }
 
 
+<<<<<<< HEAD
 //busca paciente por apellido y domicilio
 controlPaciente.getPacienteByApellidoAndDomicilio = async (req, res) => {
     try {
@@ -156,5 +164,7 @@ controlPaciente.getPacienteByDateMayoresAscendente = async (req, res) => {
 }
     
 */
+=======
+>>>>>>> 75fb01ca67f8c826d67ee5c422610461ea9874f7
 
 module.exports = controlPaciente;
