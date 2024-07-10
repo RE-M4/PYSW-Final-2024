@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const Contacto = require('./contacto');
 const {Schema} = mongoose;
+const Contacto = require ('./contacto');
 
 const AdministrativoSchema = new Schema({
     apellido: {type:String, required: true},
@@ -14,5 +14,8 @@ const AdministrativoSchema = new Schema({
     perfil : {type:String, enum:['it','decano','doctor'], required: true}
     
    
+    contactos: {type: Schema.Types.Array, ref: Contacto, required: true},
+    perfil : {type:String, enum:['it','decano','doctor'], required: true}
 })
+
  module.exports = mongoose.models.Administrativo || mongoose.model('Administrativo', AdministrativoSchema);

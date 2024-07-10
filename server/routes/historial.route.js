@@ -1,11 +1,14 @@
 //creamos el manejador de rutas
-const expreess = require('express');
-const controlHistorial = require('../controllers/historial.controller');
-const router= expreess.Router();
+//const expreess = require('express');
+//const controlHistorial = require('../controllers/historial.controller');
+//const router= expreess.Router();
 
+const express = require('express');
+const historialCtrl = require('../controllers/historial.controller');
+const router= express.Router();
 //definimos las rutas 
-router.get('/', controlHistorial.getHistorial);
-router.post('/', controlHistorial.createHistorial);
+//router.get('/', controlHistorial.getHistorial);
+//router.post('/', controlHistorial.createHistorial);
 //router.get('/id_medico/:medico', controlHistorial.getHistorialByMedico);
 //router.get('/fecha_Inicio/:fecha_Inicio', controlHistorial.getHistorialByFecha_Inicio);
 //router.get('/fecha_Fin/:fecha_Fin', controlHistorial.getHistorialByFecha_Fin);

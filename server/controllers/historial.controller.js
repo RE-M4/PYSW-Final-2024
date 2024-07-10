@@ -1,24 +1,80 @@
 const Historial = require('../models/historial');
+const historialCtrl = {}
 
-const controlHistorial = {}
+//Obtener todos los historiales o por filtro
+historialCtrl.getHistoriales = async (req, res) => {
+    const { medico, tratamiento, fecha_Inicio, estado } = req.query;
+    const filter = {};
 
-controlHistorial.getHistorial = async (req, res) => { 
-    var listaa = await Historial.find();
-    res.json(listaa);
+    if (medico) {
+        filter.medico = medico;
+    }
+    if (tratamiento) {
+        filter.tratamiento = new RegExp(tratamiento, 'i');
+    }
+    if (fecha_Inicio) {
+        filter.fecha_Inicio = { $gte: new Date(fecha_Inicio) };
+    }
+    if (estado) {
+        filter.estado = estado;
+    }
+
+    var historiales = await Historial.find(filter).populate('medico paciente');
+    res.status(200).json(historiales);
 }
-
-controlHistorial.createHistorial = async (req, res) => {
-    var hist = new Historial(req.body);
+// Obtener todos los historiales de un paciente
+historialCtrl.getHistorialByPaciente = async (req, res) => {
     try {
-        await hist.save();
-        res.json({
-            'status': '1',
-            'msg': 'HISTORIAL guardado.'
-        })
-    } catch (error) { console.log(error); 
+        const historiales = await Historial.find({ paciente: req.params.pacienteId }).populate('medico paciente');
+        res.status(200).json(historiales);
+    } catch (error) {
         res.status(400).json({
             'status': '0',
-            'msg': 'Error_Alta_HISTORIAL.'
+            'msg': 'Error_Al_buscar_Historial.'
+        });
+    }
+};
+
+// Obtener los historiales de los pacientes de un médico
+historialCtrl.getHistorialByMedico = async (req, res) => {
+    try {
+        const historiales = await Historial.find({ medico: req.params.medicoId }).populate('medico paciente');
+        res.status(200).json(historiales);
+    } catch (error) {
+        res.status(400).json({
+            'status': '0',
+            'msg': 'Error_Al_buscar_Historial.'
+        });
+    }
+};
+
+//Obtener un historial segun el ID
+historialCtrl.getHistorialById = async (req, res) => {
+    try {
+        var historial = await Historial.findById(req.params.id).populate('medico paciente');
+        res.status(200).json(historial);
+    } catch (error) {
+        res.status(400).json({
+            'status': '0',
+            'msg': 'Error_Al_buscar_Historial.'
+        })
+    }
+
+}
+//Crear un historial
+historialCtrl.createHistorial = async (req, res) => {
+    var historial = new Historial(req.body);
+    try {
+        await historial.save();
+        res.json({
+            'status': '1',
+            'msg': 'Historial guardado.'
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            'status': '0',
+            'msg': 'Error_Alta_Historial.'
         })
     }
 }

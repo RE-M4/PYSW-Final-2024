@@ -10,28 +10,29 @@ export class AdministraService {
 
   constructor(private _http: HttpClient) { }
 
+  //CRUD
 
-  public getAdministra(): Observable<any> {
+   //obtener todos los administrativos
+  getAdmins(): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json' 
-      }),
+        'Content-Type': 'application/json'
+      })
     }
-    return this._http.get('http://localhost:3000/finalg5/admin',httpOptions);
+    return this._http.get('http://localhost:3000/finalg5/administrativo', httpOptions);
+  };
 
-  }
-
-  public postAdministra(adminn: Administra): Observable<any> {
-
+  //obtener admin por dni
+  getAdminDni(dni: any): Observable<any> {
     let httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json' 
-      }),
+        'Content-Type': 'application/json'
+      })
     }
          
-      let body:any = JSON.stringify(adminn);
+     // let body:any = JSON.stringify(adminn);
     
-    return this._http.post('http://localhost:3000/finalg5/admin', body, httpOptions);
+    return this._http.get('http://localhost:3000/finalg5/admin/dni/'+dni,  httpOptions);
   }
 
 

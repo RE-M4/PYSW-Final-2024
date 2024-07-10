@@ -161,4 +161,26 @@ export class TurnoService {
   }
     
    
+
+  makePayment(turno: Turno): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': ''
+      })
+    }
+
+    let body = {
+      items: [
+        {
+          title: 'Nuevo turno',
+          quantity: 1,
+          unit_price: 2000
+        }
+      ],
+    }
+    return this._http.post('https://api.mercadopago.com/checkout/preferences', body, httpOptions);
+  }
+
+  
 }

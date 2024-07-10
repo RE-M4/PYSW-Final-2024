@@ -9,8 +9,8 @@ export class Medico {
     dni:Number;
     matricula:String;
     domicilio:String;
-    especialidad:String;
     fechaingreso:Date;
+    especialidad:String;
     contactos: Array<Contacto>;
     
     constructor (){
@@ -23,6 +23,7 @@ export class Medico {
         this.domicilio = "";
         this.especialidad = "";
         this.fechaingreso = new Date();
+        this.especialidad = "";
      
     }
 
