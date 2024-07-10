@@ -7,6 +7,7 @@ const MedicoSchema = new Schema({
     dni: {type:Number, required: true},
     matricula : {type:String, required:true},
     domicilio : {type:String, required: true},
+    fechaingreso: {type:Date, required: false},
     especialidad : {type:String, required: true},
     contactos: {type: Schema.Types.Array, ref: Contacto, required: true}
     

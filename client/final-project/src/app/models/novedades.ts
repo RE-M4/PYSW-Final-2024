@@ -2,7 +2,7 @@ import { Administra } from '../models/administra';
 
 
 export class Novedades {
-
+  /*
     _id!: string;
     titulo: String;
     descripcion: String;
@@ -19,6 +19,6 @@ export class Novedades {
         this.administra = new Administra();
     }
 
-       
+       */
 
 }

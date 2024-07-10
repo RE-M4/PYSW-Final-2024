@@ -33,4 +33,26 @@ export class NovedadService {
     
     return this._http.post('http://localhost:3000/finalg5/novedades', body, httpOptions);
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 }

@@ -1,14 +1,23 @@
 //creamos el manejador de rutas
+//const expreess = require('express');
+//const controlHistorial = require('../controllers/historial.controller');
+//const router= expreess.Router();
+
 const express = require('express');
 const historialCtrl = require('../controllers/historial.controller');
 const router= express.Router();
 //definimos las rutas 
-router.get('/', historialCtrl.getHistoriales); //Obtener todos los historiales o por filtro
-router.get('/:id', historialCtrl.getHistorialById); //Obtener un historial por su ID
-router.post('/', historialCtrl.createHistorial); //crear un historial
-router.put('/:id', historialCtrl.updateHistorial); //actualizar un historial
-router.delete('/:id', historialCtrl.deleteHistorial); //borrar un historial
-router.get('/paciente/:pacienteId', historialCtrl.getHistorialByPaciente); // Obtener historiales por paciente
-router.get('/medico/:medicoId', historialCtrl.getHistorialByMedico); // Obtener historiales por médico
+//router.get('/', controlHistorial.getHistorial);
+//router.post('/', controlHistorial.createHistorial);
+//router.get('/id_medico/:medico', controlHistorial.getHistorialByMedico);
+//router.get('/fecha_Inicio/:fecha_Inicio', controlHistorial.getHistorialByFecha_Inicio);
+//router.get('/fecha_Fin/:fecha_Fin', controlHistorial.getHistorialByFecha_Fin);
+//router.get('/estado/:estado', controlHistorial.getHistorialByEstado);
+//router.get('/titulo/:titulo', controlHistorial.getHistorialByTitulo);
+//router.get('/tratamiento/:tratamiento', controlHistorial.getHistorialByTratamiento);
+//router.get('/descripcion/:descripcion', controlHistorial.getHistorialByDescripcion);
+//router.put('/id/:id',controlHistorial.updateHistorial );
+//router.delete('/id/:id',controlHistorial.deleteHistorial );
+
 //exportamos el modulo de rutas
 module.exports = router;

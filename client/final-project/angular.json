@@ -25,8 +25,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+             "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/datatables.net-dt/css/dataTables.dataTables.css",
+              "node_modules/datatables.net-dt/css/dataTables.dataTables.min.css",
+              "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.min.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
@@ -94,8 +99,5 @@
         }
       }
     }
-  },
-  "cli": {
-    "analytics": false
   }
 }

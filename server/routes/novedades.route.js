@@ -4,11 +4,10 @@ const controlNovedades = require('../controllers/novedades.controller');
 const router = expreess.Router();
 //definimos las rutas 
 router.get('/', controlNovedades.getNovedades);
-router.get('/:id', controlNovedades.getNovedadById);
 router.post('/', controlNovedades.createNovedades);
-router.put('/:id', controlNovedades.editNovedad);
-router.delete('/:id', controlNovedades.deleteNovedad);
-router.get('/estado/:estado', controlNovedades.getNovedadByEstado)
+//router.get('/suma', controlll.getConverttt);
+//router.get('/emaill/:email', controlll.getBuscaEmail);  
+//router.get('/mOrigenn/:origen/mDestinoo/:destino', controlll.getBuscaM);  
 
 //exportamos el modulo de rutas
 module.exports = router;

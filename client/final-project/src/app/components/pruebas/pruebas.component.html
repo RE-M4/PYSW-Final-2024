@@ -1,0 +1,229 @@
+<div class="row">
+    <div class="col-12 bg-personalizado">
+        <div>
+            <h1 class="fondo11"> ..PRUEBA-FINAL - COMPONENTE DE PRUEBA ....</h1>
+        </div>
+    </div>
+</div>
+
+
+<!-- * * * * * * * * * * * * * * ** * * * * * * * * * * * -->
+ <br>
+<div class="row">
+    <div class="col-12 bg-personalizado">
+        <div>
+            <h1 class="fondo11"> ..ARCHIVO HISTORIAL ....</h1>
+        </div>
+    </div>
+</div>
+
+
+<form class="muestra079">
+    <label>...._ID:::{{idHistorial}}</label> <br>
+    <div>
+        <label for="textto22" class="form-label">TITULO:: </label>
+        <input type="text" id="textto22" name="textto22" [(ngModel)]="titulo">
+    </div>
+    <br>
+    <div>
+        <label for="textto33" class="form-label">DESCRIPCION:: </label>
+        <input type="text" id="textto33" name="textto33" [(ngModel)]="descrip">
+    </div> <br>
+    <div>
+        <label for="textto44" class="form-label">TRATAMIENTO:: </label>
+        <input type="text" id="textto44" name="textto44" [(ngModel)]="trata">
+    </div> <br>
+    <div>
+        <label for="textto55" class="form-label">ESTADO:: </label>
+        <input type="text" id="textto55" name="textto55" [(ngModel)]="estado">
+    </div>
+
+</form> <br>
+
+
+<form id="botones_his" class="textoo7">
+    ____
+    <button type="submit" class="btn btn-primary" (click)="altaHistorial()">ALTA_HISTORIAL</button>
+    ____
+    <button type="submit" class="btn btn-primary" (click)="cargaHist()">MOSTRAR_HISTORIAL</button>
+
+</form> <br>
+
+
+
+
+
+    <table class="table table-bordered table-dark">
+            <thead>
+                    <tr>
+                    
+                    <th scope="col">TITULO</th>
+                    <th scope="col">Tratamiento</th>
+                    <th scope="col">Fecha_inicio</th>
+                    <th scope="col">Fecha_fin</th>
+                    <th scope="col" >ESTADO</th>
+                    
+                    <th scope="col" >APELLIDO_MEDICO</th>    
+                    <th scope="col" >DNI_MEDICO</th>   
+                    </tr>
+                 
+            </thead>
+            <tbody>
+
+                  <tr *ngFor="let hh of historiales" >
+                    
+                    <td>{{hh.titulo}}</td>
+                    <td>{{hh.tratamiento}}</td>
+                    <td>{{hh.fecha_Inicio| date: 'd/M/yy'}}</td>
+                    <td>{{hh.fecha_Fin| date: 'd/M/yy'}}</td>
+                    <td>{{hh.estado}}</td>
+                
+                   <td>{{ buscaDNIyApellido(hh.medico) }}</td>
+                   <td>{{docu}}</td>
+                
+                   <!--   <td>{{ docu }}</td>
+                      <td>{{ hh.medico | apellidoMedico }}</td> -->
+                  </tr>
+
+            </tbody>
+        </table>
+
+
+
+
+
+<!-- * * * * * * * * * * FECHAS  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * ** * * * * * * * * * * * -->
+ <br>
+<div class="row">
+    <div class="col-12 bg-personalizado">
+        <div>
+            <h1 class="fondo11"> ..ARCHIVO TURNO ....</h1>
+        </div>
+    </div>
+</div>
+
+
+
+<form  id="turnos" class="muestra079">
+    <label>...._ID:::{{idHistorial}}</label> <br>
+    <div>
+        <label for="textto222" class="form-label">SALA:: </label>
+        <input type="text" id="textto222" name="textto222" [(ngModel)]="sala">
+    </div>
+    <br>
+    <div>
+        <label for="textto333" class="form-label">PAGADO:: </label>
+         <select name="truee" id="truee" [(ngModel)]="pagado">
+           <option value=true>true</option>
+           <option value=false>false</option>    
+        </select>   
+    </div> <br>
+  
+    <div>
+        <label for="textto555" class="form-label">ESTADO:: </label>
+        <input type="text" id="textto555" name="textto555" [(ngModel)]="estadoTurno">
+    </div>
+
+</form> <br>
+
+
+<form id="turno11"  class="textoo7"> 
+    ____
+    <button type="submit" class="btn btn-primary" (click)="altaTurno()">ALTA_TURNO</button>
+    ____
+    <button type="submit" class="btn btn-primary" (click)="cargaTurno()">MOSTRAR_TURNO</button>
+    ____
+    <button type="submit" class="btn btn-primary" (click)="buscarTurnosPorMedico()">BUSCAR_TURNO</button>
+
+
+</form> <br>
+
+
+<form class="muestra079">  
+    <table class="table table-bordered table-dark">
+            <thead>
+                    <tr>
+                    <th scope="col" >_ID:___</th>
+                    <th scope="col">PACIENTE___</th>
+                    <th scope="col">MEDICO___</th>
+                    <th scope="col">FECHA___</th>
+                    <th scope="col">HORA____</th>
+                    <th scope="col">SALA_____</th>
+                    <th scope="col">PAGADO__</th>
+                    <th scope="col">ESTADO</th>
+                    </tr>
+            </thead>
+            <tbody>
+                
+                  <tr *ngFor="let tt of turnos" >
+                    <th>{{tt._id}}</th>
+                    <td>{{tt.paciente}}</td>
+                    <td>{{tt.medico}}</td>
+                    <td>{{tt.fechaturno | date: 'd/M/yy'}}</td>
+                    <td>{{tt.horaturno | date: 'shortTime'}}</td>
+                    <td>{{tt.sala}}</td>
+                    <td>{{tt.pagado}}</td>
+                    <td>{{tt.estado}}</td>
+
+                  </tr>
+                
+            </tbody>
+        </table>
+
+</form>  
+
+
+
+
+
+<!--   
+
+<form class="muestra079">  
+    <table class="table table-bordered table-dark">
+            <thead>
+                <td>
+                    <tr>
+                    <th scope="col" >_ID:</th>
+                    <th scope="col">____________________TITULO</th>
+                    
+                    <th scope="col">_____F_inicio</th>
+                    <th scope="col">_____F_fin</th>
+                    </tr>
+                </td>
+    
+                 <td>
+                    <tr>
+                      <th scope="col" >apell_____</th>    
+                      <th scope="col" >DNI</th>   
+                    </tr>
+                 </td>
+            </thead>
+            <tbody>
+                <td> 
+                  <tr *ngFor="let p of historiales" >
+                    <th>{{p._id}}</th>
+                    <td>{{p.titulo}}</td>
+                    
+                    <td>{{p.fecha_Inicio}}</td>
+                    <td>{{p.fecha_Fin}}</td>
+                  </tr>
+                </td>
+    
+                <td>
+                   <tr *ngFor="let m of medicos">  
+                    <th> {{m.apellido}}_____</th>
+                    <td> {{m.dni}} </td>
+                   </tr> 
+                </td>
+    
+            </tbody>
+        </table>
+
+</form>  
+
+
+
+
+
+-->

@@ -9,6 +9,11 @@ const AdministrativoSchema = new Schema({
     password : {type:String, required:true},
     activo : {type:Boolean, required: true},
     fecha_alta : {type:Date, required: true},
+   
+    contactos: {type: Schema.Types.Array, ref: Contacto, required: true},
+    perfil : {type:String, enum:['it','decano','doctor'], required: true}
+    
+   
     contactos: {type: Schema.Types.Array, ref: Contacto, required: true},
     perfil : {type:String, enum:['it','decano','doctor'], required: true}
 })
