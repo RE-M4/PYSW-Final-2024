@@ -19,7 +19,7 @@ export const routes: Routes = [
     {path:'cartilla-medica', component: CartillaMedicaComponent},
     {path:'turno-registro',component: TurnoRegistroComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
+    {path: 'register/:id', component: RegisterComponent},
     {path:'header', component: HeaderComponent},
     {path:'footer', component: FooterComponent},
     {path:'novedades', component:NovedadComponent},

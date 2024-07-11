@@ -1,6 +1,6 @@
 
 import { Contacto } from '../models/contacto';
-import { Historial } from '../models/historial';
+//import { Historial } from '../models/historial';
 
 export class Paciente {
     _id!:string;
@@ -8,17 +8,17 @@ export class Paciente {
     nombre:String;
     dni:Number;
     domicilio:String;
-    contactos: Array<Contacto>;
-    historia: Array<Historial>;    
+    password:String;
+    repassword:String;
+    contactos: Array<Contacto>;   
 
     constructor(){
-      this.contactos = new Array<Contacto>();
-      this.historia = new Array<Historial>();
+      this.contactos = [new Contacto()];
       this.apellido = "";
       this.nombre = "";
       this.dni = 0;
       this.domicilio = "";
-
-
+      this.password="";
+      this.repassword="";
     }
 }

@@ -1,25 +1,25 @@
 <div class="container">
-    <h2>Bienvenido Agustin!</h2>
+    <h2>Bienvenido {{paciente.nombre}}!</h2>
     <div class="row">
         <div class="user-info col-12">
             <h5>Informacion de usuario</h5>
             <div class="user-panel row shadow">
                 <div class="col-6">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item separador"><strong>Nombre: </strong> Agustin</li>
-                        <li class="list-group-item separador"><strong>Apellido:</strong> Cresat</li>
-                        <li class="list-group-item"><strong>Telefono:</strong> 15425332</li>
+                        <li class="list-group-item separador"><strong>Nombre: </strong> {{paciente.nombre}}</li>
+                        <li class="list-group-item separador"><strong>Apellido:</strong> {{paciente.apellido}}</li>
+                        <li class="list-group-item"><strong>Telefono:</strong> {{paciente.contactos[0].valor}}</li>
                     </ul>
                 </div>
                 <div class="col-6">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item separador"><strong>DNI:</strong> 52125332</li>
-                        <li class="list-group-item separador"><strong>Domicilio:</strong> Av. fitgerald 235</li>
+                        <li class="list-group-item separador"><strong>DNI:</strong> {{paciente.dni}}</li>
+                        <li class="list-group-item separador"><strong>Domicilio:</strong>{{paciente.domicilio}}</li>
                         <li class="list-group-item"><strong>Mail:</strong> - </li>
                     </ul>
                 </div>
             </div>
-            <button type="button" class="btn button-profile">Editar datos</button>
+            <button type="button" class="btn button-profile" (click)="modificar(paciente)">Editar datos</button>
         </div>
         <div class="user-turnos col-12">
             <h5>Turnos</h5>

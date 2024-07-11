@@ -20,6 +20,6 @@
         </form>
 
         <button class="button" type="submit" id="btnSubmit">Iniciar Sesión</button>
-        <p class="text-center">¿No tenés cuenta? <a [routerLink]="['/register']" routerLinkActive="active" class="formEnlace">Registrarme</a></p>
+        <p class="text-center">¿No tenés cuenta? <a [routerLink]="['/register']" routerLinkActive="active" class="formEnlace" (click)="agregar()">Registrarme</a></p>
     </div>
 </div>

@@ -1,6 +1,8 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { PacienteService } from '../../services/paciente.service';
+import { Paciente } from '../../models/paciente';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -16,8 +18,24 @@ export class PerfilUsuarioComponent {
   { fecha: "2024/05/05", hora: "05:30", medico: "Mercedez Sosa", paciente: "Juan Perez", enfermedad: "lupus", sala: "5", pagado: "Si", estado: "Pendiente" }
   ]
   //-----------------Fin datos quemados---------------------------
-  constructor() {
 
+  constructor(private pacienteService:PacienteService,private router:Router){
+    this.obtenerPaciente();
   }
+  paciente!:Paciente;
 
+  obtenerPaciente(){
+      this.pacienteService.getPaciente().subscribe(
+        (result:any)=>{
+          console.log(result);
+          this.paciente=result[0];
+          },
+        (error:any)=>{
+          console.log(error);
+        }
+      )
+    }
+    modificar(paciente:Paciente){
+      this.router.navigate(['register', paciente._id]);
+    }
 }
