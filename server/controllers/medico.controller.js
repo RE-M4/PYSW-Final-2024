@@ -8,6 +8,19 @@ controlMedico.getMedico = async (req, res) => {
     res.json(listaa);
 }
 
+// Obtener medico por DNI
+controlMedico.getMedicoByDni = async (req, res) =>{
+    try {
+        let medico = await Medico.findOne({dni: req.params.dni});
+        res.status(200).json(medico);
+    } catch (error) { console.log(error);
+        res.status(400).json({
+            'status': '0',
+            'msg': 'Error_Al_buscar_medico.'
+        })
+    }
+}
+
 // Obtener medicos por especialidad
 controlMedico.getMedicoByEspecialidad = async (req, res) =>{
     try {

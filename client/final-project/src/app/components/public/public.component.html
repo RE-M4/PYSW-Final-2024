@@ -1,0 +1,12 @@
+<form class="m-3">
+    <div class="form-group">
+    <label for="my-input">Posteo en redes sociales</label>
+    <p>
+        <small>Ingrese el mensaje que desea postear en Facebook</small>
+    </p>
+    <input id="my-input" class="form-control w-50" type="text"
+    [(ngModel)]="mensaje" name="mensaje">
+    </div>
+    <button class="btn btn-primary"
+    (click)="postFb()">Postear en Facebook</button>
+</form>

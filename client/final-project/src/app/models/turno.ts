@@ -2,6 +2,7 @@ import { Medico } from '../models/medico';
 import { Paciente } from '../models/paciente';
 
 export class Turno {
+    id!: String;
     fechaturno:Date;
     horaturno:Date;
     sala:String;
