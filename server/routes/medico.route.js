@@ -5,6 +5,7 @@ const controlMedico = require('../controllers/medico.controller');
 const router = expreess.Router();
 //definimos las rutas 
 router.get('/', controlMedico.getMedico);
+router.get('/buscar/:dni', controlMedico.getMedicoByDni);
 router.get('/:id', controlMedico.getMedicoById);
 router.post('/', controlMedico.createMedico);
 router.put('/:id', controlMedico.editMedico);
