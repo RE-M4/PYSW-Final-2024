@@ -6,6 +6,8 @@ import { Administra } from '../../models/administra';
 import { Contacto } from '../../models/contacto'
 import { Router, RouterLink } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { Medico } from '../../models/medico';
+import { MedicoService } from '../../services/medico.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,9 +20,13 @@ export class DashboardComponent {
   admins!:Array<Administra>;
   admin!: Administra;
   dniAdmin!: any;
-
-  constructor(private administraService: AdministraService, private router: Router) {
+  medicos!:Array<Medico>;
+  medico!: Medico;
+  dniMedico!: any;
+  
+  constructor(private administraService: AdministraService, private router: Router, private medicoService: MedicoService) {
     this.obtenerAdmins();
+    this.obtenerMedicos();
   }
 
   //obtener todos los administrativos
@@ -71,6 +77,50 @@ export class DashboardComponent {
         console.log(error);
       }
     );
+  }
+
+   //obtener todos los medicos
+   obtenerMedicos() {
+    this.medicoService.getMedico().subscribe(
+      data => {
+        this.medicos = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  //obtener medico por dni
+  obtenerMedicoByDni(dni: any){
+    this.medicoService.getMedicoByDni(dni).subscribe(
+      data => {
+        console.log("este es el dni que quiero buscar",dni);
+        this.medico = data;
+      },
+      error =>{
+        console.log(error);
+      }
+    )
+  }
+
+  //Redirige al formulario de medico para modificar sus datos
+  modificarMedico(id:any){
+    this.router.navigate(['medico-form', id]);
+  }
+
+  //Elimina un medico
+  deleteMedico(id:any){
+    this.medicoService.deleteMedico(id).subscribe(
+      (result) => {
+        if(result.status == 1){
+          this.obtenerMedicos();
+        }
+      },
+      (error:any) => {
+        console.log(error);
+      }
+    )
   }
 
 }

@@ -31,7 +31,8 @@ export const routes: Routes = [
     {path: "perfil-usuario", component: PerfilUsuarioComponent},
     {path:'dashboard', component:DashboardComponent},
     {path: 'public', component: PublicComponent},
-    {path: '', redirectTo: '/home', pathMatch: 'full' }
+    {path: '', redirectTo: '/home', pathMatch: 'full' },
+    {path: 'medico-form/:id', component: MedicoFormComponent}
 ];
 
 @NgModule({

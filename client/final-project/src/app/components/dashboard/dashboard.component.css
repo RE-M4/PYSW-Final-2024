@@ -46,3 +46,8 @@ form label {
     background-color: #FF0000;
     color: #ffffff;
 }
+
+.button-crud{
+    margin-left: 5px;
+    margin-right: 5px;
+}

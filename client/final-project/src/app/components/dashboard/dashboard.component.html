@@ -119,38 +119,64 @@
 <section class="m-3">
     <article>
         <form>
-            <label for='searchDoctor' class="m-1">Medicos()</label>
-            <input type='text' id='searchDoctor' class="m-1 rounded-2 p-1" name='searchDoctor' placeholder='ej. 415626885'>
-            <button class='btn btn-primary m-1'>Buscar</button>
+            <label for='searchDoctor' class="m-1">Medicos({{medicos.length}})</label>
+            <input type='text' id='searchDoctor' class="m-1 rounded-2 p-1" name='searchDoctor'
+                placeholder='ej. 415626885' [(ngModel)]="dniMedico">
+            <button type="button" class='btn btn-primary m-1' (click)="obtenerMedicoByDni(dniMedico)"
+                data-bs-toggle="modal" data-bs-target="#exampleModalMed">Buscar</button>
         </form>
+    </article>
+    <article>
+        <div class="modal fade" id="exampleModalMed" tabindex="-1" aria-labelledby="exampleModalLabelM"
+            aria-hidden="true" *ngIf="medico">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="exampleModalLabelM">{{medico.nombre}} {{medico.apellido}}</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Dni: {{medico.dni}}</p>
+                        <p>Contactos: {{medico.contactos[0].valor}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Ver más</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </article>
 </section>
 
 <section class='items__section'>
     <article class='items__article'>
-            <!-- <h1>No hay pacientes</h1>  -->
-            <table class='table'>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>DNI</th>
-                        <th>Contactos</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                            <tr>
-                                <td>Sofia</td>
-                                <td>Yañez</td>
-                                <td>41562685</td>
-                                <td>Calle Bustamante 260</td> 
-                                <td class='td__actions'>
-                                    <a class='btn btn-primary' [routerLink]="['perfil-usuario']">Ver más</a>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
+        <!-- <h1>No hay pacientes</h1>  -->
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>Contactos</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let med of medicos">
+                    <td>{{med.nombre}}</td>
+                    <td>{{med.apellido}}</td>
+                    <td>{{med.dni}}</td>
+                    <td>{{med.contactos[0].tipo}}: {{med.contactos[0].valor}}</td>
+                    <td class='td__actions'>
+                        <a class='btn btn-primary' [routerLink]="['perfil-usuario']">Ver más</a>
+                        <button class="btn btn-success button-crud" (click)="modificarMedico(med._id)">Modificar</button>
+                        <button class="btn btn-danger" type="submit" (click)="deleteMedico(med._id)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a type="button" class="btn btn-primary" routerLink="/medico-form">Agregar Medico</a>
     </article>
 </section>
 
