@@ -32,7 +32,8 @@ export const routes: Routes = [
     {path:'dashboard', component:DashboardComponent},
     {path: 'public', component: PublicComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full' },
-    {path: 'medico-form/:id', component: MedicoFormComponent}
+    {path: 'medico-form/:id', component: MedicoFormComponent},
+    {path: 'novedad', component: NovedadComponent}
 ];
 
 @NgModule({

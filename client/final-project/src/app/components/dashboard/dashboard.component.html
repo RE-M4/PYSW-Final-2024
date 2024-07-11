@@ -1,22 +1,6 @@
 <h1 class="text-center">Bienvenido (nombre admin)!</h1>
 
 <section class="m-3">
-    <section>
-        <div class="card">
-            <h5 class="card-header">Administrador(tú)</h5>
-            <div class="card-body">
-                <h5 class="card-title">Sofía Yáñez</h5>
-                <p class="card-text">DNI: 41562685</p>
-                <p class="card-text">Contacto: 3885970702</p>
-                <a href="#" class="btn btn-primary m-2">Editar info</a>
-                <a href="#" class="btn btn-primary m-2">Eliminar Cuenta</a>
-            </div>
-        </div>
-    </section>
-</section>
-
-
-<section class="m-3">
     <h2>Acciones</h2>
     <article>
         <form>
@@ -38,8 +22,8 @@
                     <p>Contactos: {{admin.contactos}}</p>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Ver más</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
+                <button type="button" class="btn btn-primary" (click)="eliminarAdmin(admin._id)">Eliminar</button>
                 </div>
             </div>
             </div>
@@ -65,7 +49,7 @@
                             <td>{{adm.dni}}</td>
                             <td>{{adm.contactos}}</td> 
                             <td class='td__actions'>
-                                <a class='btn btn-primary' [routerLink]="['perfil-usuario']" routerLinkActive="active">Ver más</a>
+                                <a class='btn btn-primary' routerLink="/perfil-usuario" routerLinkActive="active" (click)="eliminarAdmin(adm._id)">Eliminar</a>
                             </td>
                         </tr>
                 </tbody>
@@ -81,7 +65,7 @@
     <article>
         
         <form>
-            <label for='searchPatient' class="m-1">Pacientes()</label>
+            <label for='searchPatient' class="m-1">Pacientes({{pacientes.length}})</label>
             <input type='text' class="m-1 rounded-2 p-1" id='searchPatient' name='searchPatient' placeholder='ej. 415626885' [(ngModel)]="dniPaciente">
             <button class='btn btn-primary m-1' (click)="obtenerPacienteByDni(dniPaciente)">Buscar</button>
         </form>
@@ -171,7 +155,7 @@
                     <td>{{med.dni}}</td>
                     <td>{{med.contactos[0].tipo}}: {{med.contactos[0].valor}}</td>
                     <td class='td__actions'>
-                        <a class='btn btn-primary' [routerLink]="['perfil-usuario']">Ver más</a>
+                        <a class='btn btn-primary' routerLink="/perfil-usuario">Ver más</a>
                         <button class="btn btn-success button-crud" (click)="modificarMedico(med._id)">Modificar</button>
                         <button class="btn btn-danger" type="submit" (click)="deleteMedico(med._id)">Eliminar</button>
                     </td>
@@ -185,25 +169,19 @@
 <section class="m-3">
     <article>
         <h2>Novedades</h2>
-        <button class='btn btn-primary m-3' >Crear novedad</button>
+        <button class='btn btn-primary m-3' routerLink="/novedad-form" >Crear novedad</button>
         <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="card-body" *ngFor="let nov of novedades">
+                <h5 class="card-title"><{{nov.titulo}}</h5>
+                <small>{{nov.fecha_ini}}</small>
                 <a href="#" class="card-link btn btn-primary">Aceptar</a>
-                <a href="#" class="card-link btn decline">Rechazar</a>
+                <a href="#" class="card-link btn decline"(click)="eliminarNovedad(nov._id)">Rechazar</a>
             </div>
         </div>
+        
     </article>
 </section>
 
-<section class="m-3">
-    <article>
-        <h2>Posteo en redes sociales</h2>
-        <button class='btn btn-primary' >Postear en facebook</button>
-    </article>
+<section class="m-2">
+    <app-public></app-public>
 </section>
-
-
-
-
