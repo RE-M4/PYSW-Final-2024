@@ -14,6 +14,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { MedicoFormComponent } from './components/medico-form/medico-form.component';
 import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PublicComponent } from './components/public/public.component';
 
 export const routes: Routes = [
     {path:'cartilla-medica', component: CartillaMedicaComponent},
@@ -29,6 +30,7 @@ export const routes: Routes = [
     {path: "medico-form", component: MedicoFormComponent},
     {path: "perfil-usuario", component: PerfilUsuarioComponent},
     {path:'dashboard', component:DashboardComponent},
+    {path: 'public', component: PublicComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "aot": true,
             "outputPath": "dist/final-project",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -34,11 +35,12 @@
           },
           "configurations": {
             "production": {
+              "aot": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "1.5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -58,6 +60,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "sslKey": "key.pem",
+            "sslCert": "cert.pem"
+          },
           "configurations": {
             "production": {
               "buildTarget": "final-project:build:production"
