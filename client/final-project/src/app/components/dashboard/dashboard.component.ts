@@ -8,6 +8,8 @@ import { Router, RouterLink } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { Medico } from '../../models/medico';
 import { MedicoService } from '../../services/medico.service';
+import { Paciente } from '../../models/paciente';
+import { PacienteService } from '../../services/paciente.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,10 +25,14 @@ export class DashboardComponent {
   medicos!:Array<Medico>;
   medico!: Medico;
   dniMedico!: any;
+  pacientes!:Array<Paciente>;
+  paciente!:Paciente;
+  dniPaciente!:any;
   
-  constructor(private administraService: AdministraService, private router: Router, private medicoService: MedicoService) {
+  constructor(private administraService: AdministraService, private router: Router, private medicoService: MedicoService,private pacienteService:PacienteService) {
     this.obtenerAdmins();
     this.obtenerMedicos();
+    this.obtenerPacientes();
   }
 
   //obtener todos los administrativos
@@ -115,6 +121,49 @@ export class DashboardComponent {
       (result) => {
         if(result.status == 1){
           this.obtenerMedicos();
+        }
+      },
+      (error:any) => {
+        console.log(error);
+      }
+    )
+  }
+  //Obtener todos los pacientes
+  obtenerPacientes(){
+    this.pacienteService.getPaciente().subscribe(
+      data => {
+        this.pacientes = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  //obtener paciente por dni
+  obtenerPacienteByDni(dni: any){
+    this.pacienteService.getPacienteByDni(dni).subscribe(
+      data => {
+        console.log("este es el dni que quiero buscar",dni);
+        this.paciente = data;
+      },
+      error =>{
+        console.log(error);
+      }
+    )
+  }
+
+  //Redirige al formulario de medico para modificar sus datos
+  modificarPaciente(id:any){
+    this.router.navigate(['register', id]);
+  }
+
+  //Elimina un medico
+  deletePaciente(id:any){
+    this.pacienteService.delete(id).subscribe(
+      (result) => {
+        if(result.status == 1){
+          this.obtenerPacientes();
         }
       },
       (error:any) => {

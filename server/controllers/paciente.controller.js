@@ -55,6 +55,17 @@ controlPaciente.deletePaciente = async (req, res) => {
     });
   }
 };
-
+// Obtener medico por DNI
+controlPaciente.getPacienteByDni = async (req, res) =>{
+  try {
+      let paciente = await Paciente.findOne({dni: req.params.dni});
+      res.status(200).json(paciente);
+  } catch (error) { console.log(error);
+      res.status(400).json({
+          'status': '0',
+          'msg': 'Error_Al_buscar_paciente.'
+      })
+  }
+}
 
 module.exports = controlPaciente;

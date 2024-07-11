@@ -4,6 +4,7 @@ const controlPaciente = require('../controllers/paciente.controller');
 const router = expreess.Router();
 //definimos las rutas 
 router.get('/', controlPaciente.getPaciente);
+router.get('/buscar/:dni', controlPaciente.getPacienteByDni);
 router.get('/:id', controlPaciente.getPacienteById);
 router.post('/', controlPaciente.createPaciente);
 router.put('/:id', controlPaciente.editPaciente);

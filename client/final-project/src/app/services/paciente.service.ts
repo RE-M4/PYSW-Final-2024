@@ -58,4 +58,13 @@ export class PacienteService {
     }
     return this._http.delete('http://localhost:3000/finalg5/paciente/'+paciente._id,httpOption);
   }
+
+  public getPacienteByDni(dni: any): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this._http.get('http://localhost:3000/finalg5/paciente/buscar/' + dni, httpOptions);
+  };
 }

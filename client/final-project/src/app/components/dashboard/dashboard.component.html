@@ -82,8 +82,8 @@
         
         <form>
             <label for='searchPatient' class="m-1">Pacientes()</label>
-            <input type='text' class="m-1 rounded-2 p-1" id='searchPatient' name='searchPatient' placeholder='ej. 415626885'>
-            <button class='btn btn-primary m-1'>Buscar</button>
+            <input type='text' class="m-1 rounded-2 p-1" id='searchPatient' name='searchPatient' placeholder='ej. 415626885' [(ngModel)]="dniPaciente">
+            <button class='btn btn-primary m-1' (click)="obtenerPacienteByDni(dniPaciente)">Buscar</button>
         </form>
     </article>
 </section>
@@ -102,13 +102,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                            <tr>
-                                <td>Sofia</td>
-                                <td>Yañez</td>
-                                <td>41562685</td>
-                                <td>Calle Bustamante 260</td> 
+                            <tr *ngFor="let pac of pacientes">
+                                <td>{{pac.nombre}}</td>
+                                <td>{{pac.apellido}}</td>
+                                <td>{{pac.dni}}</td>
+                                <td>{{pac.domicilio}}</td> 
                                 <td class='td__actions'>
                                     <a class='btn btn-primary' [routerLink]="['perfil-usuario']">Ver más</a>
+                                    <button class="btn btn-success button-crud" (click)="modificarPaciente(pac._id)">Modificar</button>
+                                    <button class="btn btn-danger" type="submit" (click)="deletePaciente(pac._id)">Eliminar</button>
                                 </td>
                             </tr>
                 </tbody>
