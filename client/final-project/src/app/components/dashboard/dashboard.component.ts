@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AdministraService } from '../../services/administra.service';
 import { Administra } from '../../models/administra';
+import { AdministraService } from '../../services/administra.service';
 import { Contacto } from '../../models/contacto'
 import { Router, RouterLink } from '@angular/router';
 import { RouterModule } from '@angular/router';
@@ -10,11 +10,16 @@ import { Medico } from '../../models/medico';
 import { MedicoService } from '../../services/medico.service';
 import { Paciente } from '../../models/paciente';
 import { PacienteService } from '../../services/paciente.service';
+import { PublicComponent } from '../public/public.component';
+import { NovedadComponent } from '../novedad/novedad.component';
+import { NovedadFormComponent } from '../novedad-form/novedad-form.component';
+import { Novedades } from '../../models/novedades';
+import { NovedadService } from '../../services/novedad.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, RouterModule],
+  imports: [CommonModule, FormsModule, RouterLink, RouterModule, PublicComponent, NovedadComponent, NovedadFormComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -28,9 +33,11 @@ export class DashboardComponent {
   pacientes!:Array<Paciente>;
   paciente!:Paciente;
   dniPaciente!:any;
+  novedades!: Array<Novedades>;
+  novedad!: Novedades;
   
-  constructor(private administraService: AdministraService, private router: Router, private medicoService: MedicoService,private pacienteService:PacienteService) {
-    this.obtenerAdmins();
+  constructor(private administraService: AdministraService, private router: Router, private medicoService: MedicoService,private pacienteService:PacienteService, private novedadService: NovedadService)
+  { this.obtenerAdmins();
     this.obtenerMedicos();
     this.obtenerPacientes();
   }
@@ -59,15 +66,6 @@ export class DashboardComponent {
     );
   }
 
-  //crear admin
-  crearAdmin() {
-    this.router.navigate(['/register', 0 ]);
-  }
-
-  //editar admin
-  editarAdmin(admin: Administra) {
-    this.router.navigate(['/register', admin._id]);
-  }
 
   //eliminar admin
   eliminarAdmin(_id: string) {
@@ -76,7 +74,7 @@ export class DashboardComponent {
         if(result.status == 1){
           alert('Producto eliminado');
           this.obtenerAdmins();
-          //this.router.navigate(['producto']);
+          //this.router.navigate(['dashboard']);
         }
       },
       (error:any) => {
@@ -86,7 +84,7 @@ export class DashboardComponent {
   }
 
    //obtener todos los medicos
-   obtenerMedicos() {
+  obtenerMedicos() {
     this.medicoService.getMedico().subscribe(
       data => {
         this.medicos = data;
@@ -170,6 +168,18 @@ export class DashboardComponent {
         console.log(error);
       }
     )
+  }
+
+  //eliminarNovedad
+  eliminarNovedad(id: any) {
+    this.novedadService.deleteNovedad(id).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

@@ -6,18 +6,25 @@
     <button class="btn btn-lg">Campañas</button>
     <button class="btn btn-lg">Blog médico</button>
   </div>
-  <div class="row mt-4">
+
+  <div class="col-12 mt-4">
+    <!--este boton solo se muestra al medico y administrador-->
+    <a type="button" class="btn btn-primary" routerLink="/novedad-form">Agregar novedad</a>
+  </div>
+
+  <!--Si el estado de la novedad es procesado, se va a mostrar aqui-->
+  <div class="row mt-4" *ngIf="">
     <div class="card">
-      <div class="row">
-        <div class="col-sm-4">
-          <img src="" alt="..." />
+      <div class="row" *ngFor="let n of novedades">
+        <div class="col-sm-4" >
+          <img [src]="n.imagen" class="card-img-top img-thumbnail" style="max-width: 300px" alt="...">
         </div>
         <div class="col-sm-8">
           <div class="card-body">
-            <h5 class="card-title">Titulo</h5>
-            <span class="card-text">Fecha</span>
-            <p class="card-text">Descripcion...</p>
-            <a href="#">Ver noticia</a>
+            <h5 class="card-title">{{n.titulo}}</h5>
+            <span class="card-text">{{n.fecha_ini}}</span>
+            <p class="card-text">{{n.descripcion}}</p>
+            <a (click)="obtenerNovedadId(n._id)">Ver noticia</a>
           </div>
         </div>
       </div>

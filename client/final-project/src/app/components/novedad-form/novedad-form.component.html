@@ -1,39 +1,63 @@
 <div class="container">
     <div class="row">
         <div>
+            
             <h2 class="text-center text-uppercase">Registrar novedad</h2>
         </div>
-        <form>
+        <form #novedadForm="ngForm" *ngIf="novedad">
+            <input class="form-control" name="id" [(ngModel)]="novedad._id" disabled hidden>
             <div class="form-group">
                 <label for="titulo" class="form-label">Titulo:</label>
-                <input type="text" id="titulo" class="form-control" placeholder="Agregar titulo de la novedad" name="titulo" required>
+                <input type="text" id="titulo" class="form-control" placeholder="Agregar titulo de la novedad" name="titulo" [(ngModel)]="novedad.titulo" required #titulo="ngModel">
+            </div>
+            <div *ngIf="titulo.invalid && titulo.dirty" class="text-danger mb-3">
+                <div *ngIf="titulo.errors?.['required']">
+                    El título es requerido.
+                </div>
             </div>
             <div class="form-group">
                 <label for="fechaNoticia" class="form-label">Agregar fecha de la noticia:</label>
-                <input type="date" id="fechaNoticia" class="form-control" placeholder="Agregar fecha de la novedad" name="fechaNoticia" required>
+                <input type="date" id="fechaNoticia" class="form-control" placeholder="Agregar fecha de la novedad" name="fechaNoticia" [(ngModel)]="novedad.fecha_ini" required #fechaNoticia="ngModel">
+            </div>
+            <div *ngIf="fechaNoticia.invalid && fechaNoticia.dirty" class="text-danger mb-3">
+                <div *ngIf="fechaNoticia.errors?.['required']">
+                    La fecha es requerida.
+                </div>
             </div>
             <div class="form-group">
                 <label for="descripcion">Descripcion:</label>
-                    <textarea class="form-textarea" placeholder="Escribir descripcion" id="descripcion" style="height: 100px"></textarea>
+                    <textarea class="form-textarea" placeholder="Escribir descripcion" id="descripcion" style="height: 100px" name="descripcion" required [(ngModel)]="novedad.descripcion" #descripcion="ngModel"></textarea>
             </div>
-            <div class="form-group">
-                <label for="cuerpoNovedad" class="form-label">Cuerpo de la novedad:</label>
-                <textarea class="form-textarea" placeholder="Escribir cuerpo de la novedad" id="cuerpoNovedad" style="height: 200px"></textarea>
+            <div *ngIf="descripcion.invalid && descripcion.dirty" class="text-danger mb-3">
+                <div *ngIf="descripcion.errors?.['required']">
+                    La descripción es requerido.
+                </div>
             </div>
             <div class="form-group">
                 <label for="tipoNovedad" class="form-label">Tipo de novedad:</label>
-                <select id="tipoNovedad" class="form-select">
+                <select id="tipoNovedad" class="form-select" required [(ngModel)]="novedad.tipo" #tipoNovedad="ngModel" name="tipoNovedad">
                     <option value="noticia">Noticia</option>
                     <option value="taller">Taller</option>
                     <option value="campaña">Campaña</option>
                     <option value="blogMedico">Blog Médico</option>
                 </select>
             </div>
+            <div *ngIf="tipoNovedad.invalid && tipoNovedad.dirty" class="text-danger mb-3">
+                <div *ngIf="tipoNovedad.errors?.['required']">
+                    La descripción es requerido.
+                </div>
+            </div>
             <div class="form-group">
-                <label for="img" class="form-label">Subir imagen de la novedad:</label>
-                <input type="file" name="img" id="img" class="form-control">
+                <label for="imagen" class="form-label">Subir imagen de la novedad:</label>
+                <input type="file" name="imagen" id="imagen" class="form-control" required [(ngModel)]="novedad.imagen" #imagen="ngModel">
+            </div>
+            <div *ngIf="imagen.invalid && imagen.dirty" class="text-danger mb-3">
+                <div *ngIf="imagen.errors?.['required']">
+                    La imagen es requerida.
+                </div>
             </div>
         </form>
-        <button class="button" type="submit">Guardar Novedad</button>
+        <button class="button" type="submit" routerLink="/novedad" (click)="crearNovedad()">Guardar Novedad</button>
+        <button class="button mt-2" type="submit" routerLink="/novedad">Volver</button>
     </div>
 </div>
