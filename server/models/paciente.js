@@ -7,9 +7,8 @@ const PacienteSchema = new Schema({
     nombre: {type:String, required: true},
     dni : {type:Number, required:true},
     domicilio : {type:String, required: true},
-    contactos: {type: Schema.Types.Array, ref: Contacto, required: true},
-    historia: {type: Schema.Types.Array, ref: Historial, required: true}
-   
-    
+    password :{type:String, required: true},
+    repassword :{type:String, required: true},
+    contactos: {type: Schema.Types.Array, ref: Contacto, required: true}, 
 })
  module.exports = mongoose.models.Paciente || mongoose.model('Paciente', PacienteSchema);

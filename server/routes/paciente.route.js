@@ -4,7 +4,10 @@ const controlPaciente = require('../controllers/paciente.controller');
 const router = expreess.Router();
 //definimos las rutas 
 router.get('/', controlPaciente.getPaciente);
+router.get('/:id', controlPaciente.getPacienteById);
 router.post('/', controlPaciente.createPaciente);
+router.put('/:id', controlPaciente.editPaciente);
+router.delete('/:id', controlPaciente.deletePaciente);
 //router.get('/suma', controlll.getConverttt);
 //router.get('/emaill/:email', controlll.getBuscaEmail);  
 //router.get('/mOrigenn/:origen/mDestinoo/:destino', controlll.getBuscaM);  
