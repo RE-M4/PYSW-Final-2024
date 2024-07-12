@@ -31,11 +31,12 @@
     "jspdf-autotable": "^3.8.2",
     "jszip": "^3.10.1",
     "mongoose": "^8.4.3",
+    "ng-apexcharts": "^1.10.0",
+    "ngx-facebook": "^3.0.0-0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "xlsx": "^0.18.5",
-    "zone.js": "~0.14.3",
-    "ngx-facebook": "^3.0.0-0"
+    "zone.js": "~0.14.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.6",
