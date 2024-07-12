@@ -39,8 +39,10 @@ iniciarVariable(){
 crearPaciente(){
   this.pacienteService.addPaciente(this.paciente).subscribe(
     (result:any)=>{
+      console.log(this.paciente.apellido);
+      
       console.log(result);
-      this.router.navigate(['/perfil-usuario/paciente/', result.paci._id]);
+      this.router.navigate(['login']);
     },
     (error:any)=>{
       console.log(error);
