@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { NovedadService } from '../../services/novedad.service';
 import { Novedades } from '../../models/novedades';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
