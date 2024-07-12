@@ -23,9 +23,9 @@ export class TurnoService {
     let body = {
       items: [
         {
-          title: 'Nuevo turno',
+          title: "Turno para el doctor" + turno.medico.apellido,
           quantity: 1,
-          unit_price: 2000
+          unit_price: turno.precio
         }
       ],
     }

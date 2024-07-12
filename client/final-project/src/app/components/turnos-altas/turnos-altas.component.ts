@@ -57,6 +57,8 @@ export class TurnosAltasComponent implements OnInit {
   ttBusca22 !: Array<Turno>;
   filaSeleccionada: number | null;
   filaEncontrada: number | null;
+  preferenceId!: String;
+  showPaymentButton: Boolean = false;
 
   apel!: String; ddni!: String; docu!: Number; idMedico!: string; idTurno!: string; ordenMedico!: number;
   apelPaciente!: String; docuPaciente!: Number; idPaciente!: string; ordenPaciente!: number; cadID = "";
@@ -584,6 +586,7 @@ export class TurnosAltasComponent implements OnInit {
             this.MuestraTurno = new Turno(); this.MuestraTurno = this.turnoAux;
             this.paciBBusca = new Paciente(); this.paciBBusca = pacBBusca;
             this.mediBBusca = new Medico(); this.mediBBusca = medBBusca;
+            this.makePayment(this.turnoAux);
             this.LastTurno();
             this.cargaTurno();
             this.mostrarLast();
@@ -1023,8 +1026,18 @@ export class TurnosAltasComponent implements OnInit {
     }
   }
 
-
-
+  makePayment(turno: Turno){
+    this.sTurno.makePayment(turno).subscribe(
+      (data:any) => {
+        console.log(data);
+        this.preferenceId = data.init_point;
+        this.showPaymentButton = true;
+      },
+      (err:any) => {
+        console.log(err);
+      }
+    )
+  }
 
 
 }

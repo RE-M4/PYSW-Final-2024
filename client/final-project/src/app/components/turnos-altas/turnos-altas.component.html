@@ -163,7 +163,7 @@
    ....... <button type="submit" class="btn btn-primary" (click)="ttiposBusqueda()">BUSCAR_HORARIOS</button>
   </div>
   <br>
-  <button type="submit" class="btn btn-primary btn-lg" (click)="AlttaTurno()">ALTA_TURNO</button>
+  <button type="submit" class="btn btn-primary btn-lg" (click)="AlttaTurno()" (click)="makePayment(this.turnoAux)">ALTA_TURNO</button>
   ......
   <button type="submit" class="btn btn-primary" (click)="cargaTurno()">MOSTRAR TODOS LOS TURNO</button> 
   .....
@@ -172,6 +172,7 @@
   <button type="button" class="btn btn-dark" (click)="exportToPDF()">EXPORTAR_PDF</button>
   .....
   <button type="button" class="btn btn-dark" (click)="exportPDFDiv()">EMITIR_COMPROBANTE</button>
+  <button *ngIf="showPaymentButton == true" type="button"><a href="{{preferenceId}}"></a>PAGAR CON MERCADOPAGO</button>
 
 <br>
 </form>
