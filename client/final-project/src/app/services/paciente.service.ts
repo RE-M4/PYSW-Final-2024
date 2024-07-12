@@ -67,4 +67,39 @@ export class PacienteService {
     }
     return this._http.get('http://localhost:3000/finalg5/paciente/buscar/' + dni, httpOptions);
   };
+
+  public login(dni: Number, password: String): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+
+    let body = JSON.stringify({dni: dni, password: password});
+
+    return this._http.post('http://localhost:3000/finalg5/paciente/login', body, httpOptions);
+  }
+
+  public logout() {
+    //borro el vble almacenado mediante el storage
+    sessionStorage.removeItem("dni");
+    sessionStorage.removeItem("id");
+  }
+
+  public userLoggedIn(){
+      var resultado = false;
+      var paciente = sessionStorage.getItem("dni");
+      if(paciente!=null){
+      resultado = true;
+      }
+      return resultado;
+  }
+  public userLogged(){
+    var paciente = sessionStorage.getItem("dni");
+    return paciente;
+  }
+  public idLogged(){
+    var id = sessionStorage.getItem("id");
+    return id;
+  }
 }

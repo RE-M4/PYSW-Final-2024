@@ -12,11 +12,15 @@
                 <li class="nav-item" style="margin-right: 20px;">
                     <a class="nav-link text-white" [routerLink]="['novedades']">NOVEDADES</a>
                 </li>
-                <li class="nav-item" style="margin-right: 20px;">
-                    <a class="nav-link text-white" [routerLink]="['perfil-usuario']">Mi perfil</a>
+                <li *ngIf="pacienteService.userLoggedIn()" class="nav-item" style="margin-right: 20px;">
+                    <a class="nav-link text-white" [routerLink]="['perfil-usuario', 'paciente', paciente._id]">Mi perfil</a>
                 </li>
-                <li class="nav-item" style="margin-right: 20px;">
+               
+                <li *ngIf="!pacienteService.userLoggedIn()" class="nav-item" style="margin-right: 20px;">
                     <a class="nav-link text-white" [routerLink]="['login']">INICIAR SESION</a>
+                </li>
+                <li *ngIf="pacienteService.userLoggedIn()" class="nav-item" style="margin-right: 20px;">
+                    <a class="nav-link text-white" [routerLink]="['home']" (click)="pacienteService.logout()"><button>CERRAR SESION</button></a>
                 </li>
                 <li class="nav-item dropdown" style="width: 200px;" >
                     <a class="nav-link dropdown-toggle bg-white rounded-2 text-color text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,6 +30,9 @@
                         <li class="bg-ul"><img style="width: 30px;" src="https://cdn-icons-png.flaticon.com/256/2080/2080887.png" alt=""><a class="text-white a-esp" [routerLink]="['Altaturnos']">Turnos Online</a></li>
                         <li class="bg-ul"><img style="width: 30px;" src="https://cdn-icons-png.flaticon.com/256/2804/2804595.png" alt=""><a class="text-white a-esp" [routerLink]="['perfil-usuario']">Historia Clinica</a></li>
                     </ul>
+                </li>
+                <li *ngIf="pacienteService.userLoggedIn()" class="nav-item ms-3" style="margin-right: 20px;">
+                    <small>Hola {{paciente.nombre}} {{paciente.apellido}} !</small>
                 </li>
             </ul>
         </div>
