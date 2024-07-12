@@ -17,13 +17,23 @@ import { Novedades } from '../../models/novedades';
 export class NovedadComponent {
   novedad!: Novedades;
   novedades!: Array<Novedades>;
-  constructor(private novedadService: NovedadService, private router: Router) { }
+  novedadSeleccionada!: any;
+  tipoNovedadSeleccionada: string = '';
+  todasNovedades!: Array<Novedades>;
+
+  constructor(private novedadService: NovedadService, private router: Router) { 
+    this.obtenerNovedades();
+    this.todasNovedades = [];
+    this.novedades = [];
+    this.obtenerNovedades();
+  }
 
   //obtener todas las novedades
   obtenerNovedades() {
     this.novedadService.getNovedades().subscribe(
       data => {
-        console.log(data);
+        this.todasNovedades = data;
+        this.novedades = data;
       },
       error => {
         console.log(error);
@@ -31,21 +41,20 @@ export class NovedadComponent {
     );
   }
 
-  //obtener novedades por estado procesado o pendiente
-  obtenerNovedadesEstado(estado: any) {
-    this.novedadService.getNovedadesEstado(estado).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+ //filtrar novedades por tipo
+  filtrarNovedades(tipo: string) {
+    this.tipoNovedadSeleccionada = tipo;
+  if (tipo === '') {
+    this.novedades = this.todasNovedades;
+  } else {
+    this.novedades = this.todasNovedades.filter(n => n.tipo === tipo);
+  }
   }
 
   //obtener novedad por ID
-  obtenerNovedadId(id: any) {
-    this.novedadService.getNovedadId(id).subscribe(
+  obtenerNovedadId(noticia: any) {
+    this.novedadSeleccionada = noticia;
+    this.novedadService.getNovedadId(noticia._id).subscribe(
       data => {
         console.log(data);
       },

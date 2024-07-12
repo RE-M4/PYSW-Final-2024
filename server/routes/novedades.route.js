@@ -8,7 +8,8 @@ router.get('/:id', controlNovedades.getNovedadById);
 router.post('/', controlNovedades.createNovedades);
 router.put('/:id', controlNovedades.editNovedad);
 router.delete('/:id', controlNovedades.deleteNovedad);
-router.get('/estado/:estado', controlNovedades.getNovedadByEstado)
+router.put('/estado/:id', controlNovedades.changeEstado);
+router.get('/:tipo', controlNovedades.getNovedadByTipo);
 
 //exportamos el modulo de rutas
 module.exports = router;

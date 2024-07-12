@@ -7,21 +7,20 @@ export class Novedades {
     titulo: String;
     descripcion: String;
     fecha_ini: Date;
-    estado: String;
-    administra: Administra;
     imagen: String;
     tipo: String;
+    administra: Administra;
 
     constructor(){
         
         this.titulo = '';
         this.descripcion = '';
         this.fecha_ini = new Date();
-        this.estado = 'pendiente';
-        this.administra = new Administra();
         this.imagen = '';
         this.tipo = '';
+        this.administra = new Administra();
     }
+
 
 
 }

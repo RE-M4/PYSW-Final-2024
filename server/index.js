@@ -5,6 +5,10 @@ const {mongoose} = require('./database'); //Se importan las configuraciones de "
 
 var app = express(); //Las funciones de Express se guarden en la variable.
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 //Config
 app.use(express.json()); //Se declara a Express que puede hacer uso de archivos JSON.
 app.use(cors({origin: 'http://localhost:4200'})); //Se declara a Express que use CORS para apuntar al cliente.

@@ -36,6 +36,7 @@
             <div class="form-group">
                 <label for="tipoNovedad" class="form-label">Tipo de novedad:</label>
                 <select id="tipoNovedad" class="form-select" required [(ngModel)]="novedad.tipo" #tipoNovedad="ngModel" name="tipoNovedad">
+                    <option value="">Seleccionar tipo de novedad</option>
                     <option value="noticia">Noticia</option>
                     <option value="taller">Taller</option>
                     <option value="campaña">Campaña</option>
@@ -48,16 +49,22 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="imagen" class="form-label">Subir imagen de la novedad:</label>
-                <input type="file" name="imagen" id="imagen" class="form-control" required [(ngModel)]="novedad.imagen" #imagen="ngModel">
+                <label for="fileInput" class="form-label">Subir imagen de la novedad:</label>
+                <input type="file" name="fileInput" id="fileInput" class="form-control" accept="image/*" multiple class="form-control-file" required [(ngModel)]="novedad.imagen" #imagen="ngModel"  (change)="onFileSelected($event)" >
+                
             </div>
             <div *ngIf="imagen.invalid && imagen.dirty" class="text-danger mb-3">
                 <div *ngIf="imagen.errors?.['required']">
                     La imagen es requerida.
                 </div>
             </div>
+            <label>Elegir Administrador:</label>
+            <select class="textoSelect m-3" name="selectAdm" id="selectAdm" [(ngModel)]="novedad.administra">
+                <option *ngFor="let adm of administrativo" [ngValue]="adm._id">{{adm._id}}, {{adm.dni}}, {{adm.apellido}}, {{adm.nombre}}
+                </option>
+            </select>
         </form>
-        <button class="button" type="submit" routerLink="/novedad" (click)="crearNovedad()">Guardar Novedad</button>
-        <button class="button mt-2" type="submit" routerLink="/novedad">Volver</button>
+        <button class="button" type="submit" routerLink="/novedad"   (click)="crearNovedad()">Guardar Novedad</button>
+        <button class="button mt-2" type="submit" routerLink="/dashboard">Volver</button>
     </div>
 </div>

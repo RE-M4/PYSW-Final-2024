@@ -42,6 +42,17 @@ export class NovedadService {
         })
       }
       return this._http.get('http://localhost:3000/finalg5/novedades/' + id, httpOptions);
+
+      
+    }
+    //filtrar novedad por tipo
+    getNovedadesByTipo(tipo: any): Observable<any> {
+      let httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      }
+      return this._http.get('http://localhost:3000/finalg5/novedades/' + tipo, httpOptions);
     }
 
     //crear novedad
@@ -52,6 +63,7 @@ export class NovedadService {
         })
       }
       let body = JSON.stringify(novedad); //pasar a JSON el objeto
+      console.log(body);
       return this._http.post('http://localhost:3000/finalg5/novedades', body, httpOptions);
     }
 
@@ -75,4 +87,6 @@ export class NovedadService {
       }
       return this._http.delete('http://localhost:3000/finalg5/novedades/' + id, httpOptions);
     }
+
+   
 }
