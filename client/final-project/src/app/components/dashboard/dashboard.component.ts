@@ -265,5 +265,14 @@ export class DashboardComponent {
       }
     ];
   }
+
+  //Redirige al perfil del paciente
+  perfilPaciente(id:string){
+    this.router.navigate(['perfil-usuario/paciente/', id]);
+  }
   
+  //Redirige al perfil del medico
+  perfilMedico(id:string){
+    this.router.navigate(['perfil-usuario/medico/', id]);
+  }
 }
