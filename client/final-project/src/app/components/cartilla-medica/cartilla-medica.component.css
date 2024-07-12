@@ -26,6 +26,7 @@ button {
 button:hover {
     background-color: #28B6AA;
     border: 2px solid #28B6AA;
+    color: #F8F8F8;
 }
 
 .search-bar {
@@ -88,3 +89,16 @@ input {
 .next-appointment a:hover {
     text-decoration: underline;
 }
+
+.selected {
+    background-color: #28B6AA;
+    border: 2px solid #28B6AA;
+    color: #F8F8F8;
+    font-weight: bold;
+  }
+  
+  .unselected {
+    padding: 10px 20px;
+    border: 2px solid #28B6AA;
+    color: #595858;
+  }

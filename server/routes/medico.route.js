@@ -10,7 +10,7 @@ router.get('/:id', controlMedico.getMedicoById);
 router.post('/', controlMedico.createMedico);
 router.put('/:id', controlMedico.editMedico);
 router.delete('/:id', controlMedico.deleteMedico);
-router.get('/medicos/:especialidad', controlMedico.getMedicoByEspecialidad)
-
+router.get('/especialidad/:especialidad', controlMedico.getMedicoByEspecialidad)
+router.get('/nombreapellido/:busqueda', controlMedico.getMedicoByNombreApellido);
 //exportamos el modulo de rutas
 module.exports = router;

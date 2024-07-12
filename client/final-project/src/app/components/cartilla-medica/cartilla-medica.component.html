@@ -1,34 +1,48 @@
 <div class="container">
-    <h1 class="text-center my-4 text-uppercase">Buscá en la cartilla</h1>
+    <h1 class="text-center my-4 text-uppercase">Cartilla médica</h1>
     <div class="d-flex justify-content-center mb-4 buttons">
-        <button class="btn btn-outline-primary mx-2">Especialidades médicas</button>
-        <button class="btn btn-outline-primary mx-2">Busqueda por nombre</button>
+        <button (click)="setBotonTipo('todos')"
+            [ngClass]="{'selected': tipoBusqueda === 'todos', 'unselected': tipoBusqueda !== 'todos'}">
+            Mostrar todos los medicos
+        </button>
+        <button (click)="setBotonTipo('especialidad')"
+            [ngClass]="{'selected': tipoBusqueda === 'especialidad', 'unselected': tipoBusqueda !== 'especialidad'}">
+            Especialidades médicas
+        </button>
+        <button (click)="setBotonTipo('nombre')"
+            [ngClass]="{'selected': tipoBusqueda === 'nombre', 'unselected': tipoBusqueda !== 'nombre'}">
+            Búsqueda por nombre
+        </button>
     </div>
-    <div class="mb-4 search-bar">
-        <input type="text" placeholder="Ejemplo: Neurología" required>
-        <button>Buscar</button>
+    <div *ngIf="tipoBusqueda!='todos'">
+        <p>
+            Ingresa {{ tipoBusqueda === 'especialidad' ? 'la especialidad que quieres buscar' : 'el nombre o apellido del médico que quieres buscar' }}:
+          </p>
+        <div class="mb-4 search-bar">
+            <input type="text" [placeholder]="getPlaceholder()" [(ngModel)]="busquedaInput" (ngModelChange)="searchMedicos()" required>
+            <button (click)="searchMedicos()">Buscar</button>
+        </div>
     </div>
-    <div class="mb-4 suggestions">
-        <p>Sugerencias</p>
-        <ul>
-          <li>.</li>
-        </ul>
-    </div>
-    <div class="results">
-        <h3>Resultados</h3>
-        <p>Nº resultados encontrados</p>
+    
+    <h3>Resultados</h3>
+        <p>Nº resultados encontrados: {{medicos.length}}</p>
+    <div class="results" *ngIf="medicos.length > 0">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4" *ngFor="let m of medicos">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Dr. nombre apellido</h5>
-                        <p class="card-subtitle text-center">Especialidades</p>
-                        <p class="card-text">Ubicacion</p>
-                        <p class="card-text">Contactos</p>
+                        <h3 class="card-title text-center">Dr. {{m.apellido}}, {{m.nombre}}</h3>
+                        <h5 class="card-subtitle text-center mb-3">Especialidad: {{m.especialidad}}</h5>
+                        <p class="card-text"><strong>Ubicacion:</strong> {{m.domicilio}}</p>
+                        <p class="card-text"><strong>Contactos:</strong> </p>
+                        <ul>
+                            <li class="list-group-item separador" *ngFor="let contacto of m.contactos">
+                                <strong>{{contacto.tipo}}:</strong> {{ contacto.valor }}</li>
+                        </ul>
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center next-appointment">
-                        <p>Próximo turno: </p>
-                        <a href="#">Ver agenda</a>
+                        <p>Próximos turnos: </p>
+                        <a [routerLink]="['/turno-registro']">Ver agenda</a>
                     </div>
                 </div>
             </div>

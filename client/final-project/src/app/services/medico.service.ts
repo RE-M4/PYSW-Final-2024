@@ -77,4 +77,21 @@ export class MedicoService {
     return this._http.delete('http://localhost:3000/finalg5/medico/' + id, httpOptions);
   }
 
+  public getMedicoByEspecialidad(especialidad: string): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this._http.get('http://localhost:3000/finalg5/medico/especialidad/' + especialidad, httpOptions);
+  }
+
+  getMedicoByNombreApellido(nombreapellido: string): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }
+    return this._http.get('http://localhost:3000/finalg5/medico/nombreapellido/' + nombreapellido, httpOptions);
+  }
 }
