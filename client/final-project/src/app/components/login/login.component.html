@@ -8,7 +8,7 @@
             <div>
                 <label for="dni" class="form-label">DNI:</label>
                 <input type="text" id="dni" class="form-control" placeholder="ej. 41562685" aria-describedby="dni" name="dni" autocomplete="off"
-                [(ngModel)]="dni" required #dni="ngModel" minlength="7" >
+                [(ngModel)]="pacienteform.dni" required #dni="ngModel" minlength="7" >
             </div>
 
             <div *ngIf="dni.invalid && (dni.dirty || dni.touched)" class="alert alert-danger">
@@ -25,7 +25,7 @@
             <div>
                 <label for="password" class="form-label">Contraseña:</label>
                 <input type="password" id="password" class="form-control" placeholder="ej. ••••••••••••••••" aria-describedby="password" name="password" autocomplete="off"
-                required #password="ngModel" [(ngModel)]="password">
+                required #password="ngModel" [(ngModel)]="pacienteform.password">
             </div>
 
             <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
@@ -38,7 +38,7 @@
 
         </form>
 
-        <button class="button" type="submit" id="btnSubmit">Iniciar Sesión</button>
+        <button class="button" type="submit" id="btnSubmit" (click)="login()">Iniciar Sesión</button>
         <p class="text-center">¿No tenés cuenta? <a [routerLink]="['/register']" routerLinkActive="active" class="formEnlace" (click)="agregar()">Registrarme</a></p>
     </div>
 </div>

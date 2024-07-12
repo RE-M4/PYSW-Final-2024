@@ -68,4 +68,35 @@ controlPaciente.getPacienteByDni = async (req, res) =>{
   }
 }
 
+controlPaciente.login = async (req, res) =>{
+  const criteria = {
+    dni: req.body.dni,
+    password: req.body.password
+  }
+  
+  try {
+    //el método findOne retorna un objeto que cumpla con los criterios de busqueda
+    const paciente = await Paciente.findOne(criteria);
+      if (!paciente) {
+      res.json({
+        status: 0,
+        msg: "not found"
+      })
+      } else {
+      res.json({
+        status: 1,
+        msg: "success",
+        dni: paciente.dni, //retorno información útil para el frontend
+        id: paciente.id //retorno información útil para el frontend
+      })
+      }
+    } catch (error) {
+      res.json({
+      status: 0,
+      msg: 'error'
+    })
+    }
+    
+}
+
 module.exports = controlPaciente;
