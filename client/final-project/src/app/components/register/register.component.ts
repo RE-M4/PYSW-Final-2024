@@ -40,7 +40,7 @@ crearPaciente(){
   this.pacienteService.addPaciente(this.paciente).subscribe(
     (result:any)=>{
       console.log(result);
-      this.router.navigate(["perfil-usuario"]);
+      this.router.navigate(['/perfil-usuario/paciente/', result.paci._id]);
     },
     (error:any)=>{
       console.log(error);
@@ -64,7 +64,7 @@ modificar(){
     (result:any)=>{
       console.log(result);
       if(result.status==1){
-        this.router.navigate(['perfil-usuario'])
+        this.router.navigate(['/perfil-usuario/paciente/', this.paciente._id]);
       }
     },
     (error:any)=>{
