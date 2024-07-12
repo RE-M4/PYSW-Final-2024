@@ -10,5 +10,6 @@ const PacienteSchema = new Schema({
     password :{type:String, required: true},
     repassword :{type:String, required: true},
     contactos: {type: Schema.Types.Array, ref: Contacto, required: true}, 
+    fechaingreso: { type: Date, required: false}
 })
  module.exports = mongoose.models.Paciente || mongoose.model('Paciente', PacienteSchema);

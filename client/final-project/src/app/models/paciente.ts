@@ -1,6 +1,6 @@
 
 import { Contacto } from '../models/contacto';
-//import { Historial } from '../models/historial';
+import { Historial } from '../models/historial';
 
 export class Paciente {
     _id!:string;
@@ -11,6 +11,8 @@ export class Paciente {
     password:String;
     repassword:String;
     contactos: Array<Contacto>;   
+    fechaingreso: Date;
+    historia!: Array<Historial>;
 
     constructor(){
       this.contactos = [new Contacto()];
@@ -20,5 +22,6 @@ export class Paciente {
       this.domicilio = "";
       this.password="";
       this.repassword="";
+      this.fechaingreso = new Date();
     }
 }
