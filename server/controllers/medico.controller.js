@@ -24,13 +24,37 @@ controlMedico.getMedicoByDni = async (req, res) =>{
 // Obtener medicos por especialidad
 controlMedico.getMedicoByEspecialidad = async (req, res) =>{
     try {
-        let medicos = await Medico.find({especialidad: req.params.especialidad});
+        const especialidad = req.params.especialidad.toLowerCase();
+        let medicos = await Medico.find({
+            especialidad: { $regex: especialidad, $options: 'i' }
+        });
         res.json(medicos);
-    } catch (error) { console.log(error);
+    } catch (error) {
+        console.log(error);
         res.status(400).json({
             'status': '0',
             'msg': 'Error_Al_buscar_medicos.'
-        })
+        });
+    }
+}
+
+// Obtener medicos por nombre o apellido
+controlMedico.getMedicoByNombreApellido = async (req, res) =>{
+    try {
+        const busqueda = req.params.busqueda;
+        let medicos = await Medico.find({
+            $or: [
+                { nombre: { $regex: busqueda, $options: 'i' } },
+                { apellido: { $regex: busqueda, $options: 'i' } }
+            ]
+        });
+        res.json(medicos);
+    } catch (error) { 
+        console.log(error);
+        res.status(400).json({
+            'status': '0',
+            'msg': 'Error_Al_buscar_medicos.'
+        });
     }
 }
 
