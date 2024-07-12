@@ -1,6 +1,6 @@
 
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
@@ -11,8 +11,21 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
-  constructor(private router:Router){}
+export class LoginComponent implements OnInit {
+
+  dni: String;
+  password: String;
+
+  constructor(private router:Router){    
+    this.dni = "";
+    this.password = "";
+    console.log(this.dni);
+    console.log(this.password);
+  } 
+
+  ngOnInit(): void {
+    
+  }
   agregar(){
     this.router.navigate(['register',0]);
   }
