@@ -29,7 +29,7 @@ export class PublicComponent implements OnInit{
       try{
         this.fb.api('/385122418012698/feed', apiMethod, {
           "message": this.mensaje,
-          "access_token": "EAAOGQdAXZCq8BO1yatkmDTfkkWRyoBMUDsEg3CcBnDrjWWBKPMt474UQBh9R9tbpBxjZADrOafsGTzsvaFBwxi7a1Aaf3Hs8GZB3EX1kXn4xl77k4NinNKf9sji8WyfDjOfBiMwptyAuNnkmdoG8yGbCHL2fol0ZCExcuQ6XPUEeu1PugnXdvZBfqPInGbJtt4tmYoTIhSkKZBzVLdn89NDgZDZD"
+          "access_token": "EAAOGQdAXZCq8BO58ZBzB37iZCOfbvFEj5nt2ZCYvh5x2XlJE44nYqmVJ2m0cZBoke7VFPDGB4rCMZCEhZBWptMfOUuq6qWGyPuvG5oiBFH9clDVY3A4aHnnhVhZA98UL69qUwjyKpdGOwjQ2U6S9UOAIkJXpMm0ZAbHXJYkG2JxOUU2csfwphpP9D0znKiM7GN4YUmXmq2SPkhicFZB20blOq57AZDZD"
         });
         alert('Publicación exitosa en Facebook');
       } catch{
