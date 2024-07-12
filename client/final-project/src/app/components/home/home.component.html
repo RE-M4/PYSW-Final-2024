@@ -2,11 +2,11 @@
     <section class="row col-12 ">
         <article class="col-lg-6 personalize text-white ">
             <p class="title">Nuestros pacientes <br> son nuestra mejor <br> referencia</p>
-            <a href="#">Acciones rápidas</a>
+            <p>Acciones rápidas</p>
             <div class="mt-3">
-                <a href="#">Directorio Médico</a>
-                <a href="#">Turnos Disponibles</a>
-                <a href="#">Últimas Noticias</a>
+                <a [routerLink]="['/cartilla-medica']">Directorio Médico</a>
+                <a [routerLink]="['/Altaturnos']">Turnos Disponibles</a>
+                <a [routerLink]="['/novedades']">Últimas Noticias</a>
             </div>
         </article>
             <div id="carouselExampleSlidesOnly" class="carousel slide col-lg-6 slider-per m-0 p-0 " data-bs-ride="carousel">
@@ -28,7 +28,7 @@
         <div class="sec-novedades">
             <h2>Novedades</h2>
             <p>Conoce las ultimas noticias sobre el hospital</p>
-            <button class="btn btn-outline-danger rounded-5">Ver todas las novedades</button>
+            <button class="btn btn-outline-danger rounded-5" [routerLink]="['/novedades']">Ver todas las novedades</button>
         </div>
         <div class="row">
             <div class="card mt-3 mb-5" style="width: 18rem;" *ngFor="let n of novedades">
