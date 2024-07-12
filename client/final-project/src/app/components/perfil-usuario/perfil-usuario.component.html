@@ -1,50 +1,56 @@
 <div class="container">
-    <h2>Bienvenido {{paciente.nombre}}!</h2>
+    <h2 class="text-center">Bienvenido {{userInfo.nombre}} {{userInfo.apellido}}!</h2>
     <div class="row">
         <div class="user-info col-12">
-            <h5>Informacion de usuario</h5>
+            <h3>Informacion de usuario</h3>
             <div class="user-panel row shadow">
                 <div class="col-6">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item separador"><strong>Nombre: </strong> {{paciente.nombre}}</li>
-                        <li class="list-group-item separador"><strong>Apellido:</strong> {{paciente.apellido}}</li>
-                        <li class="list-group-item"><strong>Telefono:</strong> {{paciente.contactos[0].valor}}</li>
+                        <li class="list-group-item separador"><strong>Nombre: </strong> {{userInfo.nombre}} </li>
+                        <li class="list-group-item separador"><strong>Apellido: </strong> {{userInfo.apellido}} </li>
+                        <li class="list-group-item separador"><strong>DNI: </strong> {{userInfo.dni}} </li>
+                        <li class="list-group-item separador"><strong>Domicilio: </strong> {{userInfo.domicilio}}</li>
+                        <li class="list-group-item separador" *ngIf="userType=='medico'"><strong>Especialidad:
+                                </strong> {{userInfo.especialidad}} </li>
+                        <li class="list-group-item separador" *ngIf="userType=='medico'"><strong>Matricula:</strong> {{userInfo.matricula}} </li>
                     </ul>
                 </div>
                 <div class="col-6">
+                    <h5>Contactos:</h5>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item separador"><strong>DNI:</strong> {{paciente.dni}}</li>
-                        <li class="list-group-item separador"><strong>Domicilio:</strong>{{paciente.domicilio}}</li>
-                        <li class="list-group-item"><strong>Mail:</strong> - </li>
+                        <li class="list-group-item separador" *ngFor="let contacto of userInfo.contactos"> <strong>{{contacto.tipo}}:</strong> {{ contacto.valor }}</li>
+                        <li class="list-group-item separador"></li>
                     </ul>
                 </div>
             </div>
-            <button type="button" class="btn button-profile" (click)="modificar(paciente)">Editar datos</button>
+            <button type="button" class="btn button-profile" (click)="modificar(userInfo)">Editar datos</button>
         </div>
         <div class="user-turnos col-12">
-            <h5>Turnos</h5>
-            <div>
-                <p>Si necesitas asignar un nuevo turno ve a <a [routerLink]="['/turno-registro']"
+            <h3>Turnos</h3>
+            <div *ngIf="userInfo=='paciente'">
+                <p>Si necesitas asignar un nuevo turno ve a <a [routerLink]="['turno-registro']"
                         class="enlace-turno">seccion de turnos</a>.</p>
             </div>
             <div class="row g-4">
-                <div class="card col-12 col-md-6 col-xl-4 " *ngFor="let usu of usuarios">
-                    <div class="card-header bg-transparent">Fecha: {{usu.fecha}} - Horario: {{usu.hora}}</div>
+                <div class="card col-12 col-md-6 col-xl-4">
+                    <div class="card-header bg-transparent">
+                        <h5 class="card-title">Fecha:   -  Horario:</h5>
+                    </div>
                     <div class="card-body">
-                        <p class="card-text  separador">Dr/a: {{usu.medico}}</p>
-                        <p class="card-text separador">Paciente: {{usu.paciente}}</p>
-                        <p class="card-text separador">Enfermedad: {{usu.enfermedad}}</p>
-                        <p class="card-text separador">Sala: {{usu.sala}}</p>
-                        <p class="card-text ">pagado: {{usu.pagado}}</p>
+                        <p class="card-text  separador" *ngIf="userType === 'paciente'">Dr/a: </p>
+                        <p class="card-text separador" *ngIf="userType === 'medico'">Paciente: </p>
+                        <p class="card-text separador">Enfermedad: </p>
+                        <p class="card-text separador">Sala: </p>
+                        <p class="card-text ">Pagado: </p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-body-secondary">Estado: {{usu.estado}}</small>
+                        <small class="text-body-secondary">Estado: </small>
                     </div>
                 </div>
             </div>
         </div>
         <div class="user-historial col-12">
-            <h5>Historial</h5>
+            <h3>Historiales Médicos</h3>
             <div class="table-responsive">
                 <table class="table">
                     <thead>
@@ -52,21 +58,23 @@
                             <th scope="col">Titulo</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Tratamiento</th>
-                            <th scope="col">Médico</th>
+                            <th scope="col" *ngIf="userType === 'paciente'">Médico</th>
+                            <th scope="col" *ngIf="userType === 'medico'">Paciente</th>
                             <th scope="col">Fecha Inicio</th>
                             <th scope="col">Fecha Finalización</th>
                             <th scope="col">Estado</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                        <tr *ngFor="let h of historiales">
+                            <th>{{h.titulo}}</th>
+                            <td>{{h.descripcion}}</td>
+                            <td>{{h.tratamiento}}</td>
+                            <td *ngIf="userType === 'paciente'">{{h.medico.nombre}} {{h.medico.apellido}}</td>
+                            <td *ngIf="userType === 'medico'">{{h.paciente.nombre}} {{h.paciente.apellido}}</td>
+                            <td>{{h.fecha_Inicio | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{h.fecha_Fin | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{h.estado}}</td>
                         </tr>
                     </tbody>
                 </table>

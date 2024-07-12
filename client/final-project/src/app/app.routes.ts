@@ -28,7 +28,7 @@ export const routes: Routes = [
     {path:'home', component:HomeComponent},
     {path: "contact-form", component: ContactFormComponent},
     {path: "medico-form", component: MedicoFormComponent},
-    {path: "perfil-usuario", component: PerfilUsuarioComponent},
+    {path: "perfil-usuario/:type/:id", component: PerfilUsuarioComponent},
     {path:'dashboard', component:DashboardComponent},
     {path: 'public', component: PublicComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full' },

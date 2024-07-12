@@ -1,5 +1,6 @@
 
 import { Medico } from '../models/medico';
+import { Paciente } from './paciente';
 
 export class Historial {
 
@@ -8,19 +9,21 @@ export class Historial {
     descripcion:String;    
     tratamiento:String;
     medico: Medico;
+    paciente: Paciente;
     fecha_Inicio:Date;
     fecha_Fin:Date;
     estado:String;
 
     constructor(){
     
-        this.fecha_Inicio = new Date();
-        this.fecha_Fin = new Date();
-        this.estado = "Activo";
+        this.titulo = "";
         this.descripcion = "";
         this.tratamiento = "";
-        this.titulo = "";
         this.medico = new Medico();
+        this.paciente = new Paciente();
+        this.fecha_Inicio = new Date();
+        this.fecha_Fin = new Date();
+        this.estado = "";
     }
 
 }
