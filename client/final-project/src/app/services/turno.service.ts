@@ -217,6 +217,23 @@ export class TurnoService {
     }
     return this._http.delete('http://localhost:3000/finalg5/turno/id/'+idd, httpOptions);
   }
+
+  public getTurnoPaciente(id:string): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json' 
+      }),
+    }
+    return this._http.get('http://localhost:3000/finalg5/turno/id_paciente/'+id,httpOptions);
+  }
     
+  public getTurnoMedico(id:string): Observable<any> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json' 
+      }),
+    }
+    return this._http.get('http://localhost:3000/finalg5/turno/id_medico/'+id,httpOptions);
+  }
    
 }

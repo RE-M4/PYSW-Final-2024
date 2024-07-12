@@ -111,7 +111,7 @@
                                 <td>{{pac.dni}}</td>
                                 <td>{{pac.domicilio}}</td> 
                                 <td class='td__actions'>
-                                    <a class='btn btn-primary' [routerLink]="['perfil-usuario']">Ver más</a>
+                                    <button class='btn btn-primary' (click)="perfilPaciente(pac._id)">Ver más</button>
                                     <button class="btn btn-success button-crud" (click)="modificarPaciente(pac._id)">Modificar</button>
                                     <button class="btn btn-danger" type="submit" (click)="deletePaciente(pac._id)">Eliminar</button>
                                 </td>
@@ -174,7 +174,7 @@
                     <td>{{med.dni}}</td>
                     <td>{{med.contactos[0].tipo}}: {{med.contactos[0].valor}}</td>
                     <td class='td__actions'>
-                        <a class='btn btn-primary' routerLink="/perfil-usuario">Ver más</a>
+                        <button class='btn btn-primary' (click)="perfilMedico(med._id)">Ver más</button>
                         <button class="btn btn-success button-crud" (click)="modificarMedico(med._id)">Modificar</button>
                         <button class="btn btn-danger" type="submit" (click)="deleteMedico(med._id)">Eliminar</button>
                     </td>

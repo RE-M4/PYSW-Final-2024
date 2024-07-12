@@ -7,6 +7,8 @@ import { MedicoService } from '../../services/medico.service';
 import { HistorialService } from '../../services/historial.service';
 import { Historial } from '../../models/historial';
 import { Medico } from '../../models/medico';
+import { TurnoService } from '../../services/turno.service';
+import { Turno } from '../../models/turno';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -27,11 +29,13 @@ export class PerfilUsuarioComponent {
   userId!: string;
   userType!: string;
   userInfo!: any;
-  turnos!:[];
+  turnos!:Turno[];
+  paciente!: Paciente;
   constructor(
     private pacienteService: PacienteService,
     private medicoService: MedicoService,
     private historialService: HistorialService,
+    private turnoService: TurnoService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -40,6 +44,7 @@ export class PerfilUsuarioComponent {
     this.userId = this.route.snapshot.paramMap.get('id')!;
     this.userType = this.route.snapshot.paramMap.get('type')!;
 
+    this.paciente= new Paciente();
     this.loadUserData();
 
   }
@@ -50,6 +55,8 @@ export class PerfilUsuarioComponent {
         (result: any) => {
           console.log(result);
           this.userInfo = result;
+          this.paciente = result;
+          console.log(this.paciente);
         },
         (error: any) => {
           console.log(error);
@@ -60,6 +67,16 @@ export class PerfilUsuarioComponent {
         (result: any) => {
           console.log(result);
           this.historiales = result;
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+
+      this.turnoService.getTurnoPaciente(this.userId).subscribe(
+        (result: any) => {
+          console.log(result);
+          this.turnos = result;
         },
         (error: any) => {
           console.log(error);
@@ -85,6 +102,15 @@ export class PerfilUsuarioComponent {
           console.log(error);
         }
       );
+      this.turnoService.getTurnoMedico(this.userId).subscribe(
+        (result: any) => {
+          console.log(result);
+          this.turnos = result;
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      )
     }
   }
   modificar(user:any):void {

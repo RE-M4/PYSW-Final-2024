@@ -62,7 +62,7 @@ controlTurno.getTurnoByState = async (req, res) => {
 //busca por _id del Medico
 controlTurno.getTurnoByMedico = async (req, res) => {
     try {
-        var turnos = await Turno.find({medico: req.params.medico}).sort({ fechaturno: -1 });
+        var turnos = await Turno.find({medico: req.params.medico}).sort({ fechaturno: -1 }).populate('medico paciente');
         if(!turnos) return res.status(404).json({msg: 'No hay turnos para este medico'});
         res.json(turnos);
     } catch (error) {
@@ -74,7 +74,7 @@ controlTurno.getTurnoByMedico = async (req, res) => {
 //busca por paciente
 controlTurno.getTurnoByPaciente = async (req, res) => {
     try {
-        var turnos = await Turno.find({paciente: req.params.paciente}).sort({ fechaturno: -1 });
+        var turnos = await Turno.find({paciente: req.params.paciente}).sort({ fechaturno: -1 }).populate('medico paciente');
         if(!turnos) return res.status(404).json({msg: 'No hay turnos para este paciente'});
         res.json(turnos);
     } catch (error) {

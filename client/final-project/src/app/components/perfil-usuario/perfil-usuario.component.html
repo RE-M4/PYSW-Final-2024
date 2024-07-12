@@ -27,24 +27,19 @@
         </div>
         <div class="user-turnos col-12">
             <h3>Turnos</h3>
-            <div *ngIf="userInfo=='paciente'">
-                <p>Si necesitas asignar un nuevo turno ve a <a [routerLink]="['turno-registro']"
-                        class="enlace-turno">seccion de turnos</a>.</p>
-            </div>
-            <div class="row g-4">
+            <div class="row g-4" *ngFor="let t of turnos">
                 <div class="card col-12 col-md-6 col-xl-4">
                     <div class="card-header bg-transparent">
-                        <h5 class="card-title">Fecha:   -  Horario:</h5>
+                        <h5 class="card-title">Fecha: {{t.fechaturno | date: 'dd/MM/yyyy'}}   -  Horario: {{t.horaturno | date: 'HH:mm'}}</h5>
                     </div>
                     <div class="card-body">
-                        <p class="card-text  separador" *ngIf="userType === 'paciente'">Dr/a: </p>
-                        <p class="card-text separador" *ngIf="userType === 'medico'">Paciente: </p>
-                        <p class="card-text separador">Enfermedad: </p>
-                        <p class="card-text separador">Sala: </p>
-                        <p class="card-text ">Pagado: </p>
+                        <p class="card-text  separador" *ngIf="userType === 'paciente'">Dr/a: {{t.medico.apellido}}, {{t.medico.nombre}}</p>
+                        <p class="card-text separador" *ngIf="userType === 'medico'">Paciente: {{t.paciente.apellido}}, {{t.paciente.nombre}}</p>
+                        <p class="card-text separador">Sala: {{t.sala}}</p>
+                        <p class="card-text">Pagado: {{ t.pagado ? 'Pagado' : 'Sin pagar' }}</p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-body-secondary">Estado: </small>
+                        <small class="text-body-secondary">Estado: {{t.estado}}</small>
                     </div>
                 </div>
             </div>
