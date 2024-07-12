@@ -76,6 +76,39 @@ controlNovedades.deleteNovedad = async (req, res) =>{
             'msg': 'Error_Al_eliminar_novedad.'
         });
     }
+
+}
+
+
+    //cambiar estado de la novedad
+    controlNovedades.changeEstado = async (req, res) =>{
+        try {
+            await Novedades.updateOne ({_id: req.body._id}, {estado: 'procesado'});
+            res.json({
+                'status': '1',
+                'msg': 'Estado cambiado.'
+            });
+        } catch (error) {
+            res.status(400).json({
+                'status': '0',
+                'msg': 'Error_Al_cambiar_estado.'
+            });
+        }
+    }
+
+    //filtrar novedades por tipo
+    controlNovedades.getNovedadByTipo = async(req, res) =>{
+        try{
+            var listaa = await Novedades.find({tipo: req.params.tipo});
+            res.json(listaa);
+
+        }catch{
+            res.status(400).json({
+                'status': '0',
+                'msg': 'Error_Al_filtrar_por_tipo.'
+        });
+    }
+
 }
 
 module.exports = controlNovedades;

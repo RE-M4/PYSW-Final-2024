@@ -40,7 +40,10 @@ export class DashboardComponent {
   { this.obtenerAdmins();
     this.obtenerMedicos();
     this.obtenerPacientes();
+    this.obtenerNovedades();
   }
+
+  
 
   //obtener todos los administrativos
   obtenerAdmins() {
@@ -175,6 +178,9 @@ export class DashboardComponent {
     this.novedadService.deleteNovedad(id).subscribe(
       data => {
         console.log(data);
+        console.log("Novedad eliminada");
+        alert('Novedad eliminada');
+        this.obtenerNovedades();
       },
       error => {
         console.log(error);
@@ -182,4 +188,22 @@ export class DashboardComponent {
     );
   }
 
+  //obtener todas las novedades
+  obtenerNovedades() {
+    this.novedadService.getNovedades().subscribe(
+      data => {
+        this.novedades = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  //editar novedad
+  editarNovedad(id: any) {
+    this.router.navigate(['/novedad-form', id]);
+  }
+  
+  
 }

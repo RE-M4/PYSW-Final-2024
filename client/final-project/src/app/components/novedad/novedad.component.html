@@ -1,33 +1,57 @@
 <div class="container mb-3">
   <h1 class="text-center text-uppercase">Novedades</h1>
   <div class="col-12 nav mt-4">
-    <button class="btn btn-lg">Noticias</button>
-    <button class="btn btn-lg">Talleres</button>
-    <button class="btn btn-lg">Campañas</button>
-    <button class="btn btn-lg">Blog médico</button>
+    <button class="btn btn-lg" (click)="filtrarNovedades('')">Todas</button>
+    <button class="btn btn-lg" (click)="filtrarNovedades('noticia')">Noticias</button>
+    <button class="btn btn-lg" (click)="filtrarNovedades('taller')">Talleres</button>
+    <button class="btn btn-lg" (click)="filtrarNovedades('campaña')">Campañas</button>
+    <button class="btn btn-lg" (click)="filtrarNovedades('blogMedico')">Blog médico</button>
   </div>
-
-  <div class="col-12 mt-4">
-    <!--este boton solo se muestra al medico y administrador-->
-    <a type="button" class="btn btn-primary" routerLink="/novedad-form">Agregar novedad</a>
-  </div>
-
-  <!--Si el estado de la novedad es procesado, se va a mostrar aqui-->
-  <div class="row mt-4" *ngIf="">
-    <div class="card">
-      <div class="row" *ngFor="let n of novedades">
-        <div class="col-sm-4" >
-          <img [src]="n.imagen" class="card-img-top img-thumbnail" style="max-width: 300px" alt="...">
-        </div>
-        <div class="col-sm-8">
-          <div class="card-body">
-            <h5 class="card-title">{{n.titulo}}</h5>
-            <span class="card-text">{{n.fecha_ini}}</span>
-            <p class="card-text">{{n.descripcion}}</p>
-            <a (click)="obtenerNovedadId(n._id)">Ver noticia</a>
-          </div>
+  
+  <div class="card">
+    <div class="row" *ngFor="let n of novedades">
+      <div class="col-sm-4"   >
+        <img [src]="n.imagen" class="card-img-top img-thumbnail" style="max-width: 300px" alt="...">
+      </div>
+      <div class="col-sm-8" >
+        <div class="card-body">
+          <h5 class="card-title">{{n.titulo}}</h5>
+          <p class="card-text">{{n.descripcion}}</p>
+          <p class="card-text">{{n.fecha_ini | date: 'longDate'}}</p>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="obtenerNovedadId(n)">
+            Ver mas
+          </button>
         </div>
       </div>
     </div>
   </div>
+  
+  <div *ngIf="novedades.length === 0">
+    <h2 class="text-center text-danger">No hay novedades disponibles.</h2>
+  </div>
 </div>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="novedadSeleccionada">
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">{{novedadSeleccionada.titulo}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img [src]="novedadSeleccionada.imagen" class="card-img-top img-thumbnail" style="max-width: 300px" alt="...">
+        <p>{{novedadSeleccionada.descripcion}}</p>
+        <p>{{novedadSeleccionada.fecha_ini | date: 'longDate'}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

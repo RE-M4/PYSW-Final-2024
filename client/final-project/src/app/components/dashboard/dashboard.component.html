@@ -19,7 +19,11 @@
                 </div>
                 <div class="modal-body">
                     <p>Dni: {{admin.dni}}</p>
-                    <p>Contactos: {{admin.contactos}}</p>
+                    <ul>
+                        <li  *ngFor="let contacto of admin.contactos">
+                            {{contacto.tipo}}: {{contacto.valor}}
+                        </li>
+                    </ul>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Cerrar</button>
@@ -43,15 +47,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <tr *ngFor="let adm of admins">
-                            <td>{{adm.nombre}}</td>
-                            <td>{{adm.apellido}}</td>
-                            <td>{{adm.dni}}</td>
-                            <td>{{adm.contactos}}</td> 
-                            <td class='td__actions'>
-                                <a class='btn btn-primary' routerLink="/perfil-usuario" routerLinkActive="active" (click)="eliminarAdmin(adm._id)">Eliminar</a>
-                            </td>
-                        </tr>
+                    <tr *ngFor="let adm of admins">
+                        <td>{{adm.nombre}}</td>
+                        <td>{{adm.apellido}}</td>
+                        <td>{{adm.dni}}</td>
+                        <td>
+                            <ul>
+                                <li  *ngFor="let contacto of adm.contactos">
+                                    {{contacto.tipo}}: {{contacto.valor}}
+                                </li>
+                            </ul>
+                        </td>
+                        <td class='td__actions'>
+                            <a class='btn btn-primary' routerLink="/perfil-usuario" routerLinkActive="active" (click)="eliminarAdmin(adm._id)">Eliminar</a>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </article>
@@ -167,15 +177,18 @@
 </section>
 
 <section class="m-3">
-    <article>
-        <h2>Novedades</h2>
-        <button class='btn btn-primary m-3' routerLink="/novedad-form" >Crear novedad</button>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body" *ngFor="let nov of novedades">
-                <h5 class="card-title"><{{nov.titulo}}</h5>
-                <small>{{nov.fecha_ini}}</small>
-                <a href="#" class="card-link btn btn-primary">Aceptar</a>
-                <a href="#" class="card-link btn decline"(click)="eliminarNovedad(nov._id)">Rechazar</a>
+    <h2>Novedades</h2>
+    <button class='btn btn-primary m-3' routerLink="/novedad-form" >Crear novedad</button>
+    <article class="d-flex" >
+        <div class="card m-3" style="width: 18rem;" *ngFor="let nov of novedades">
+            <div class="card-body" >
+                <img [src]="nov.imagen" class="card-img-top img-thumbnail" style="max-width: 300px" alt="...">
+                <h5 class="card-title">{{nov.titulo}}</h5>
+                <p class="card-text">{{nov.descripcion}}</p>
+                <small>{{nov.fecha_ini | date: 'longDate' }}</small>
+                <div class="mt-4">
+                <a routerLink="/dashboard"  class="card-link btn decline"(click)="eliminarNovedad(nov._id)">Eliminar</a>
+                </div> 
             </div>
         </div>
         
