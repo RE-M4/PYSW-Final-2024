@@ -10,21 +10,21 @@ import { MedicoService } from '../../services/medico.service';
 import { PacienteService } from '../../services/paciente.service';
 import { TurnoService } from '../../services/turno.service';
 import { elementAt } from 'rxjs';
-import { DataTablesModule } from 'angular-datatables';
+//import { DataTablesModule } from 'angular-datatables';
 import { Config } from 'datatables.net';
 import 'datatables.net-buttons-dt';
 declare var $: any;
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
-import { saveAs } from 'file-saver';
+//import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
 
 
 @Component({
   selector: 'app-turnos-altas',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, DataTablesModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './turnos-altas.component.html',
   styleUrl: './turnos-altas.component.css'
 })

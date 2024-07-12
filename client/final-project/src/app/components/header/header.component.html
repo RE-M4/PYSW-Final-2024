@@ -7,24 +7,24 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto"> 
                 <li class="nav-item" style="margin-right: 20px;">
-                    <a class="nav-link active text-white" aria-current="page" href="#">INICIO</a>
+                    <a class="nav-link active text-white" aria-current="page" [routerLink]="['home']">INICIO</a>
                 </li>
                 <li class="nav-item" style="margin-right: 20px;">
-                    <a class="nav-link text-white" href="#">NOVEDADES</a>
+                    <a class="nav-link text-white" [routerLink]="['novedades']">NOVEDADES</a>
                 </li>
                 <li class="nav-item" style="margin-right: 20px;">
-                    <a class="nav-link text-white" href="#">ESPECIALIDADES</a>
+                    <a class="nav-link text-white" [routerLink]="['perfil-usuario']">Mi perfil</a>
                 </li>
                 <li class="nav-item" style="margin-right: 20px;">
-                    <a class="nav-link text-white" href="#">INICIAR SESION</a>
+                    <a class="nav-link text-white" [routerLink]="['login']">INICIAR SESION</a>
                 </li>
                 <li class="nav-item dropdown" style="width: 200px;" >
                     <a class="nav-link dropdown-toggle bg-white rounded-2 text-color text-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         AUTOGESTION
                     </a>
                     <ul class="dropdown-menu" style="width: 200px;">
-                        <li class="bg-ul"><img style="width: 30px;" src="https://cdn-icons-png.flaticon.com/256/2080/2080887.png" alt=""><a class="text-white a-esp" href="#">Turnos Online</a></li>
-                        <li class="bg-ul"><img style="width: 30px;" src="https://cdn-icons-png.flaticon.com/256/2804/2804595.png" alt=""><a class="text-white a-esp" href="#">Historia Clinica</a></li>
+                        <li class="bg-ul"><img style="width: 30px;" src="https://cdn-icons-png.flaticon.com/256/2080/2080887.png" alt=""><a class="text-white a-esp" [routerLink]="['Altaturnos']">Turnos Online</a></li>
+                        <li class="bg-ul"><img style="width: 30px;" src="https://cdn-icons-png.flaticon.com/256/2804/2804595.png" alt=""><a class="text-white a-esp" [routerLink]="['perfil-usuario']">Historia Clinica</a></li>
                     </ul>
                 </li>
             </ul>

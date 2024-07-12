@@ -11,6 +11,7 @@ export class Medico {
     domicilio:String;
     especialidad:String;
     contactos: Array<Contacto>;
+    fechaingreso: Date;
     
     constructor (){
         this.contactos = [new Contacto()];
@@ -20,6 +21,7 @@ export class Medico {
         this.matricula = "";
         this.domicilio = "";
         this.especialidad = "";
+        this.fechaingreso = new Date();
     }
 
 }
