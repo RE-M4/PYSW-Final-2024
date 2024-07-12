@@ -47,7 +47,8 @@
                "node_modules/datatables.net-buttons/js/buttons.colVis.min.js",
             
                "node_modules/datatables.net-buttons/js/buttons.html5.min.js",
-               "node_modules/datatables.net-buttons/js/buttons.print.min.js"
+               "node_modules/datatables.net-buttons/js/buttons.print.min.js",
+               "node_modules/apexcharts/dist/apexcharts.min.js"
             ]
           },
           "configurations": {

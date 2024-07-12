@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Administra } from '../../models/administra';
 import { AdministraService } from '../../services/administra.service';
@@ -15,11 +15,29 @@ import { NovedadComponent } from '../novedad/novedad.component';
 import { NovedadFormComponent } from '../novedad-form/novedad-form.component';
 import { Novedades } from '../../models/novedades';
 import { NovedadService } from '../../services/novedad.service';
+import { NgApexchartsModule } from 'ng-apexcharts';
+
+//importacones de modulos para grafico de apexChart
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexTitleSubtitle
+} from "ng-apexcharts";
+
+// Definicion de la interface para las opciones del grafico
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  title: ApexTitleSubtitle;
+};
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, RouterModule, PublicComponent, NovedadComponent, NovedadFormComponent],
+  imports: [CommonModule, FormsModule, RouterLink, RouterModule, PublicComponent, NovedadComponent, NovedadFormComponent, NgApexchartsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -35,12 +53,39 @@ export class DashboardComponent {
   dniPaciente!:any;
   novedades!: Array<Novedades>;
   novedad!: Novedades;
-  
+  cantAdmins:any;
+  cantMedicos:any;
+  cantPacientes:any;
+
+
+  @ViewChild("chart") chart!: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
+
   constructor(private administraService: AdministraService, private router: Router, private medicoService: MedicoService,private pacienteService:PacienteService, private novedadService: NovedadService)
   { this.obtenerAdmins();
     this.obtenerMedicos();
     this.obtenerPacientes();
     this.obtenerNovedades();
+
+    this.chartOptions = {
+      series: [
+        {
+          name: "My-series",
+          data: [0, 0, 0]
+        }
+      ],
+      chart: {
+        height: 350,
+        type: "bar"
+      },
+      title: {
+        text: "Usuarios Registrados"
+      },
+      xaxis: {
+        categories: ["Adminstradores", "Medicos", "Pacientes"]
+      }
+    };
+
   }
 
   
@@ -50,6 +95,8 @@ export class DashboardComponent {
     this.administraService.getAdmins().subscribe(
       data => {
         this.admins = data;
+        this.cantAdmins = this.admins.length;
+        this.updateChart();
       },
       error => {
         console.log(error);
@@ -91,6 +138,8 @@ export class DashboardComponent {
     this.medicoService.getMedico().subscribe(
       data => {
         this.medicos = data;
+        this.cantMedicos = this.medicos.length;
+        this.updateChart();
       },
       error => {
         console.log(error);
@@ -134,6 +183,8 @@ export class DashboardComponent {
     this.pacienteService.getPaciente().subscribe(
       data => {
         this.pacientes = data;
+        this.cantPacientes = this.pacientes.length;
+        this.updateChart();
       },
       error => {
         console.log(error);
@@ -205,5 +256,14 @@ export class DashboardComponent {
     this.router.navigate(['/novedad-form', id]);
   }
   
+  //carga los datos que traen los servicios
+  updateChart() {
+    this.chartOptions.series = [
+      {
+        name: "Cantidad:",
+        data: [this.cantAdmins, this.cantMedicos, this.cantPacientes]
+      }
+    ];
+  }
   
 }
