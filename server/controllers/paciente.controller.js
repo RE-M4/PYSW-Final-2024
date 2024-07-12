@@ -13,7 +13,8 @@ controlPaciente.createPaciente = async (req, res) => {
         await paci.save();
         res.json({
             'status': '1',
-            'msg': 'Paciente guardado.'
+            'msg': 'Paciente guardado.',
+            paci
         })
     } catch (error) { console.log(error); 
         res.status(400).json({
