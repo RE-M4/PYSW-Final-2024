@@ -7,56 +7,141 @@
             <div class="form-group">
                 <label for="name" class="form-label">Nombre:</label>
                 <input type="text" id="name" class="form-control" placeholder="ej. María" aria-describedby="name" name="name" autocomplete="off"
-                required #nombre="" [(ngModel)]="medico.nombre">
+                required [(ngModel)]="medico.nombre" minlength="3" #name="ngModel">
                 
+            </div>
+
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+                <div *ngIf="name.errors?.['required']">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                    Este campo debe tener al menos 3 caracteres
+                </div>
+
             </div>
             
             <div class="form-group">
                 <label for="lastName" class="form-label">Apellido:</label>
                 <input type="text" id="lastName" class="form-control" placeholder="ej. Villalba" aria-describedby="lastName" name="lastName" autocomplete="off"
-                required #lastName="" [(ngModel)]="medico.apellido">
+                required [(ngModel)]="medico.apellido" minlength="3" #lastName="ngModel">
+            </div>
+
+            <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+
+                <div *ngIf="lastName.errors?.['required']">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="lastName.errors?.['minlength']">
+                    Este campo debe tener al menos 3 caracteres
+                </div>
+
             </div>
 
             <div class="form-group">
                 <label for="dni" class="form-label">DNI:</label>
                 <input type="number" id="dni" class="form-control" placeholder=" ej. 41562685" aria-describedby="dni" name="dni" autocomplete="off"
-                required #dni="" [(ngModel)]="medico.dni">
+                required [(ngModel)]="medico.dni" minlength="7" #dni="ngModel">
+            </div>
+
+            <div *ngIf="dni.invalid && (dni.dirty || dni.touched)" class="alert alert-danger">
+
+                <div *ngIf="dni.errors?.['required']">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="dni.errors?.['minlength']">
+                    Este campo debe tener al menos 7 caracteres
+                </div>
+
             </div>
 
             <div class="form-group">
                 <label for="matricula" class="form-label">Matricula:</label>
                 <input type="text" id="matricula" class="form-control" placeholder=" ej. Fj436261" aria-describedby="matricula" name="matricula" autocomplete="off"
-                required #matricula="" [(ngModel)]="medico.matricula">
+                required [(ngModel)]="medico.matricula" #matricula="ngModel" minlength="7">
+            </div>
+
+            <div *ngIf="matricula.invalid && (matricula.dirty || matricula.touched)" class="alert alert-danger">
+
+                <div *ngIf="matricula.errors?.['required']">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="matricula.errors?.['minlength']">
+                    Este campo debe tener al menos 7 caracteres
+                </div>
+
             </div>
 
             <div class="form-group">
                 <label for="domicilio" class="form-label">Domicilio:</label>
                 <input type="text" id="domicilio" class="form-control" placeholder=" ej. Av. Balvin 236" aria-describedby="domicilio" name="domicilio" autocomplete="off"
-                required #domicilio="" [(ngModel)]="medico.domicilio">
+                required [(ngModel)]="medico.domicilio" #domicilio="ngModel" minlength="5">
+            </div>
+
+            <div *ngIf="domicilio.invalid && (domicilio.dirty || domicilio.touched)" class="alert alert-danger">
+
+                <div *ngIf="domicilio.errors?.['required']">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="domicilio.errors?.['minlength']">
+                    Este campo debe tener al menos 5 caracteres
+                </div>
+
             </div>
 
             <div class="form-group">
                 <label for="especialidad" class="form-label">Especialidad:</label>
                 <input type="text" id="especialidad" class="form-control" placeholder=" ej. Cirujano" aria-describedby="especialidad" name="especialidad" autocomplete="off"
-                required #especialidad="" [(ngModel)]="medico.especialidad">
+                required [(ngModel)]="medico.especialidad" #especialidad="ngModel" minlength="5">
+            </div>
+
+            <div *ngIf="especialidad.invalid && (especialidad.dirty || especialidad.touched)" class="alert alert-danger">
+
+                <div *ngIf="especialidad.errors?.['required']">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="especialidad.errors?.['minlength']">
+                    Este campo debe tener al menos 5 caracteres
+                </div>
+
             </div>
 
             <div class="form-group">
                 <label for="contact" class="form-label">Tipo de contacto:</label>
-                <select id="contact" name="contact" class="form-select" aria-describedby="contact" [(ngModel)]="medico.contactos[0].tipo">
-                    <option value="email">Email</option>
+                <select id="contact" name="contact" class="form-select" aria-describedby="contact" [(ngModel)]="medico.contactos[0].tipo" #contact="ngModel" required>
+                    <option value="email" selected>Email</option>
                     <option value="phone">Teléfono</option>
                     <option value="whatsapp">Whatsapp</option>
                 </select>
             </div>
 
+            <div *ngIf="contact.invalid && (contact.dirty || contact.touched)" class="alert alert-danger">
+
+                <div *ngIf="contact.errors?.['required']">
+                    Este campo es requerido
+                </div>
+
+            </div>
+
             <div class="form-group">
                 <label for="contactValue" class="form-label">Contacto:</label>
-                <input type="text" id="contactValue" class="form-control" placeholder="ej. 3885970702" aria-describedby="contactValue" name="contactValue" autocomplete="off"
-                required #contactValue="" [(ngModel)]="medico.contactos[0].valor">
+                <input type="text" id="contactValue" class="form-control" placeholder="Tu correo o teléfono" aria-describedby="contactValue" name="contactValue" autocomplete="off"
+                required [(ngModel)]="medico.contactos[0].valor" #contactValue="ngModel" minlength="8">
+            </div>
+
+            <div *ngIf="contactValue.invalid && (contactValue.dirty || contactValue.touched)" class="alert alert-danger">
+
+                <div *ngIf="contactValue.errors?.['required']">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="contactValue.errors?.['minlength']">
+                    Este campo debe tener al menos 8 caracteres
+                </div>
+
             </div>
             
-            <button class="button" type="submit" id="btnSubmit">{{accion ? 'Modificar' : 'Registrar'}}</button>
+            <button [disabled]="!formulario.form.valid" class="button" type="submit" id="btnSubmit">{{accion ? 'Modificar' : 'Registrar'}}</button>
         </form>
     </div>
 </div>
