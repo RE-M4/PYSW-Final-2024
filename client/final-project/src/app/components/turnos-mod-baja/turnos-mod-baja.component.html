@@ -1,0 +1,293 @@
+<!-- * * * * * * * * * * TURNOS  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * *"** * * * * * * * * * * * -->
+<br>
+<div class="row">
+  <div class="col-12 bg-personalizado">
+    <div>
+      <h1 class="fondo11">ARCHIVO TURNOS - MODIFICA / BAJA  </h1>
+    </div>
+  </div>
+</div>
+<br>
+
+
+<div class="contenedor-formularios">
+   
+  <form id="turnos" class="formulario">
+    <br>
+    <div class="grupo-input">
+      <label for="esttado" class="form-label">ESTADO:: </label>
+      <select class="textoSelect" name="esttado" id="esttado" [(ngModel)]="estadoTurno" required="true">
+        <option value="vigente">VIGENTE</option>
+        <option value="urgente">URGENTE</option>
+        <option value="cancelado">CANCELADO</option>
+      </select>
+    </div>
+
+    <div class="grupo-input">
+      <label for="textto222" class="form-label">SALA:: </label>
+      <input class="textoSelect" type="text" id="textto222" name="textto222" [(ngModel)]="sala" required="true">
+    </div>
+
+    <div class="grupo-input">
+      <label for="enffermedad" class="form-label">TIPO_ENFERMEDAD:: </label>
+      <input class="textoSelect" type="text" id="enffermedad" name="enffermedad" [(ngModel)]="enfermedad" required="true">
+    </div>
+
+    <div class="grupo-input">
+      <label for="truee" class="form-label">PAGADO:: </label>
+      <select class="textoSelect" name="truee" id="truee" [(ngModel)]="pagado" required="true">
+        <option value=true>TRUE</option>
+        <option value=false>FALSE</option>
+      </select>
+    </div>
+
+    <div class="grupo-input">
+      <label for="tipoPPago" class="form-label">TIPO_PAGO:: </label>
+      <select class="textoSelect" name="tipoPPago" id="tipoPPago" [(ngModel)]="tipoPago" required="true">
+        <option value="pami">PAMI = %30 descuento al PRECIO</option>
+        <option value="swiss_medical">SWISS_MEDICAL = %15 descuento al PRECIO</option>
+        <option value="osde">OSDE = %20 descuento al PRECIO</option>
+        <option value="instituto_de_seguro">INSTITUTO_DE_SEGURO = %25 descuento al PRECIO</option>
+      </select>
+    </div>
+
+    <div class="grupo-input">
+      <label for="precioMonto" class="form-label">PRECIO:: </label>
+      <input class="textoSelect" type="number" id="precioMonto" name="precioMonto" [(ngModel)]="precio" min="1" required="true">
+    </div>
+
+    <div class="grupo-input">
+      <label for="fecha222" class="form-label">FECHA:: </label>
+      <input class="textoSelect" type="date" id="fecha222" name="fecha222" [min]="fechaMinima.toISOString().split('T')[0]"
+        [(ngModel)]="fecha" required="true">
+    </div>
+
+    <div class="grupo-input">
+      <label for="hhora" class="form-label">HORA:: </label>
+
+      <select class="textoSelect" name="hhora" id="hhora" [(ngModel)]="hhora" required="true">
+        <option value=8>8:00</option>
+        <option value=9>9:00</option>
+        <option value=10>10:00</option>
+        <option value=11>11:00</option>
+        <option value=12>12:00</option>
+        <option value=13>13:00</option>
+        <option value=14>14:00</option>
+        <option value=15>15:00</option>
+        <option value=16>16:00</option>
+        <option value=17>17:00</option>
+        <option value=18>18:00</option>
+        <option value=19>19:00</option>
+        <option value=20>20:00</option>
+        <option value=21>21:00</option>
+        <option value=22>22:00</option>
+      </select>
+    </div> 
+
+  
+    <br>
+  </form>
+
+
+  <form class="formulario">
+      <br>
+    <div class="grupo-input">
+      <label for="selectMed" class="form-label">SELECT_MEDICO:: </label>
+      <select class="textoSelect" name="selectMed" id="selectMed" [(ngModel)]="idMedico">
+        <option *ngFor="let med of medicos" [value]="med._id">__{{med.dni}}__{{med.apellido}}__{{med.nombre}} </option>
+      </select>
+    </div>
+
+    <div class="grupo-input">
+      <label for="selectPac" class="form-label">SELECT_PACIENTE:: </label>
+      <select class="textoSelect" name="selectPac" id="selectPac" [(ngModel)]="idPaciente">
+        <option *ngFor="let pac of pacientes" [value]="pac._id">__{{pac.dni}}__{{pac.apellido}}__{{pac.nombre}}
+        </option>
+      </select>
+    </div> <br>
+
+    <div class="grupo-input">
+      <label for="apellidobusca" class="form-label">APELLIDO::_ </label>
+      <input class="textoSelect" type="text" id="apellidobusca" name="apellidobusca" [(ngModel)]="apellidoBusca">
+    </div>
+
+    <div class="grupo-input">
+      <label for="dnibusca" class="form-label">DNI::_ </label>
+      <input class="textoSelect" type="number" id="dnibusca" name="dnibusca" [(ngModel)]="dniBusca">
+    </div>
+
+    <div class="grupo-input">
+      <label for="fechabusca" class="form-label">FECHA:: </label>
+      <input class="textoSelect" type="date" id="fechabusca" name="fechabusca" [max]="fechaMaxima.toISOString().split('T')[0]"
+        [(ngModel)]="fechaBusca">
+    </div>
+
+    <div class="grupo-input">
+      <label for="ttipobusca" class="form-label">TIPO BUSQUEDA::_ </label>
+      <select class="textoSelect" name="ttipobusca" id="ttipobusca" [(ngModel)]="tipoBusca">
+        <option value=0>POR DNI</option>
+        <option value=1>POR APELLIDO</option>
+        <option value=2>POR FECHA MINIMA</option>
+        <option value=3>POR APELLIDO Y FECHA</option>
+      </select>
+    </div>
+
+    
+    ......<button type="submit" class="btn btn-primary" (click)="busquedaPaciente()">BUSCA_PACIENTE</button>
+    ...............................
+    <button type="submit" class="btn btn-primary" (click)="busquedaMedico()">BUSCA_MEDICO</button>
+    <br>
+   
+    .....
+    <button type="submit" class="btn btn-primary" (click)="cargaPaciente()">VER TODOS LOS PACIENTES</button>
+    ............  
+    <button type="submit" class="btn btn-primary" (click)="cargaMedico()">VER TODOS LOS MEDICOS</button>
+   
+
+  </form>
+</div>
+
+<br>
+
+<div class="formulario2">
+  <label> TURNO SELECCIONADO CON ID:::___ {{ cadID }} </label> <br>
+  <label>{{ cadInfo }}</label>
+</div>
+<br>
+
+<form id="turno11" class="formulario2">
+  <div>
+    <label for="ttipobusca2" class="ffondo111 ">SELECCIONA TIPO BUSQUEDA TURNO:::: </label>
+    <select class="textoSelect" name="ttipobusca2" id="ttipobusca2" [(ngModel)]="BuscaTTurno">
+      <option value=0>POR MEDICO</option>
+      <option value=1>POR PACIENTE</option>
+      <option value=2>POR MEDICO Y PACIENTE</option>
+      <option value=3>POR FECHA</option>
+      <option value=4>POR ENFERMEDAD</option>
+      <option value=5>POR SALA</option>
+      <option value=6>POR TIPO_PAGO</option>
+    </select>
+   ....... <button type="submit" class="btn btn-primary" (click)="ttiposBusqueda()">BUSCAR_TURNO</button>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary btn-lg" (click)="modificaTurno()">MODIFICAR_TURNO</button>
+  ......
+  <button type="submit" class="btn btn-primary" (click)="cargaTurno()">MOSTRAR TODOS</button>
+  .....
+  <button type="button" class="btn btn-dark" (click)="exportToExcel()">IMPRIMIR_EXCEL</button>
+  .....
+  <button type="button" class="btn btn-dark" (click)="exportToPDF()">EXPORTAR_PDF</button>
+  .....
+  <button type="button" class="btn btn-dark" (click)="exportPDFDiv()">EMITIR_COMPROBANTE</button>
+
+<br>
+</form> <br>
+
+
+<br>
+<div id="lastTurnoComprobante"> 
+<div class="formulario2"> <h1 class="fondo11"> {{saberTitulo}} </h1> </div> 
+<div id="lastTurnoComprobante2" class="contenedor-formularios">  
+  <form id="mostrarDattos"  class="formulario"> 
+ <div class="formulario2">  
+  "MEDICO_DNI::::"{{ this.mediBBusca?.dni }} ....Apellido Nombre::: {{this.mediBBusca?.apellido}}, {{this.mediBBusca?.nombre}}    
+ </div> 
+ <div  class="formulario2">  
+  "PACIENTE_DNI::::"{{ this.paciBBusca?.dni }} ....Apellido Nombre::: {{this.paciBBusca?.apellido}}, {{this.paciBBusca?.nombre}}    
+ </div> 
+ <div class="formulario2" >  
+  "SALA::::"{{this.MuestraTurno?.sala}}     
+ </div > 
+</form>
+  
+<form id="mostrarDattos2"  class="formulario">
+  <div class="formulario2">  
+    "FECHA::::"{{ this.MuestraTurno?.fechaturno | date: 'd/M/yy' }} .... {{this.MuestraTurno?.horaturno| date: 'shortTime'}}    
+   </div> 
+   <div class="formulario2">  
+    "ENFERMEDAD::::"{{this.MuestraTurno?.enfermedad}}     
+   </div> 
+   <div class="formulario2">  
+    "ESTADO::::"{{this.MuestraTurno?.estado}}     
+   </div> 
+</form>
+
+ <form id="mostrarDattos3"  class="formulario"> 
+   <div class="formulario2">  
+    "TIPO_PAGO::::"{{this.MuestraTurno?.tipoPago}}     
+   </div> 
+   <div class="formulario2" >  
+    "PRECIO::::"{{this.MuestraTurno?.precio}}     
+   </div> 
+   <div class="formulario2" >  
+    "PAGADO::::"{{this.MuestraTurno?.pagado}}     
+   </div> 
+</form>
+</div>
+</div>
+
+<br>
+
+
+<br>
+<div>
+  <button class="btn btn-primary" (click)="paginaAnterior()" [disabled]="paginaActual === 0">Anterior</button>
+  .......
+  <button class="btn btn-primary" (click)="paginaSiguiente()" [disabled]="(paginaActual + 1) * pageSize >= ttBusca22.length">Siguiente</button>
+</div>
+<br>
+<!-- * * * * * * * * * * * *"** * * * * * * * * * * * -->
+<div>  <h1 class="fondo11"> TABLA TURNOS </h1> </div>
+<br>
+
+<form>
+  <table #ttablaTurno class="bordes-tabla">
+    <thead>
+      <tr>
+        <th scope="col">SELECCION</th>
+        <th scope="col">Nombre_MEDICO</th>
+        <th scope="col">DNI_MEDICO</th>
+        <th scope="col">Nombre_Paciente</th>
+        <th scope="col">DNI_Paciente</th>
+        <th scope="col">ENFERMEDAD </th>
+        <th scope="col">FECHA</th>
+        <th scope="col">HORA</th>
+        <th scope="col">SALA</th>
+        <th scope="col">TIPO_PAGO</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">PAGADO</th>
+        <th scope="col">ESTADO</th>
+      </tr>
+    </thead>
+    <tbody>
+     
+      <tr *ngFor="let tt of turnos; let i = index"
+      [ngClass]="{'row-selected': i === turnoSeleccionado, 'text-yellow': selectedRows.includes(i)}"
+      [ngClass]="{'encontrada11': i === turnoRojo, 'text-alertta': selectedRojo.includes(i)}">
+
+        <td>
+          {{i}} <button type="submit" class="btn btn-primary" (click)="selectTurno(i,tt._id,tt.paciente,tt.medico,tt.fechaturno,tt.sala,
+               tt.enfermedad,tt.pagado,tt.precio,tt.tipoPago,tt.estado)">SELECT</button>
+        </td>
+
+        <td>{{ buscaDatosMedico(tt.medico) }}</td>
+        <td>{{docu}}</td>
+        <td>{{ buscaDatosPaciente(tt.paciente) }}</td>
+        <td>{{docuPaciente}}</td>
+        <td>{{tt.enfermedad}}</td>
+        <td>{{tt.fechaturno | date: 'd/M/yy'}}</td>
+        <td>{{tt.horaturno | date: 'HH:mm'}}</td>
+        <td>{{tt.sala}}</td>
+        <td>{{tt.tipoPago}}</td>
+        <td>{{tt.precio}}</td>
+        <td>{{tt.pagado}}</td>
+        <td>{{tt.estado}}</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
+</form>
+<br> <br>

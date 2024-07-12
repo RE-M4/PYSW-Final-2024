@@ -17,7 +17,7 @@ export class TurnoRegistroComponent {
   //"Test" es un objeto tipo "Turno" de prueba, la función de pagos debe ser adaptada para que trabaje con los turnos que vuelvan de la BBDD.
   test = new Turno();
   constructor(private turnoService: TurnoService) { 
-    this.test.id = "1"
+    this.test._id = "1"
     this.test.estado = "Pendiente"
     this.showPaymentButton = false;
     this.preferenceId = "";
@@ -25,12 +25,12 @@ export class TurnoRegistroComponent {
 
   makePayment(){
     this.turnoService.makePayment(this.test).subscribe(
-      (data) => {
+      (data:any) => {
         console.log(data);
         this.preferenceId = data.init_point;
         this.showPaymentButton = true;
       },
-      (err) => {
+      (err:any) => {
         console.log(err);
       }
     )
