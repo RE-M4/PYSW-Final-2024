@@ -19,6 +19,9 @@
                 <li *ngIf="!pacienteService.userLoggedIn()" class="nav-item" style="margin-right: 20px;">
                     <a class="nav-link text-white" [routerLink]="['login']">INICIAR SESION</a>
                 </li>
+                <li *ngIf="!pacienteService.userLoggedIn()" class="nav-item" style="margin-right: 20px;">
+                    <a class="nav-link text-white" [routerLink]="['register',0]">CREAR UN USUARIO</a>
+                </li>
                 <li *ngIf="pacienteService.userLoggedIn()" class="nav-item" style="margin-right: 20px;">
                     <a class="nav-link text-white" [routerLink]="['home']" (click)="pacienteService.logout()"><button>CERRAR SESION</button></a>
                 </li>
