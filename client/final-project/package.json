@@ -26,6 +26,8 @@
     "datatables.net-dt": "^2.0.3",
     "express": "^4.19.2",
     "file-saver": "^2.0.5",
+    "html2canvas": "^1.4.1",
+    "html2pdf.js": "^0.10.2",
     "jquery": "^3.6.0",
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",

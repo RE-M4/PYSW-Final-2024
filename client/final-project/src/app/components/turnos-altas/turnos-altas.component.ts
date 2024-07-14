@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule,RouterLink } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Paciente } from '../../models/paciente';
 import { Medico } from '../../models/medico';
@@ -62,7 +62,7 @@ export class TurnosAltasComponent implements OnInit {
 
   apel!: String; ddni!: String; docu!: Number; idMedico!: string; idTurno!: string; ordenMedico!: number;
   apelPaciente!: String; docuPaciente!: Number; idPaciente!: string; ordenPaciente!: number; cadID = "";
-  fecha!: Date; fechaMinima = new Date(); selectFecha = new Date(); sala!: string; pagado: boolean = true; saberTitulo = "__";
+  fecha:Date =new Date(); fechaMinima = new Date(); selectFecha = new Date(); sala!: string; pagado: boolean = true; saberTitulo = "__";
   estadoTurno: string = "vigente"; enfermedad!: string; tipoPago: string = "pami"; precio: Number = 1; hhora = 8; cadInfo = "";
 
   dniBusca!: Number; apellidoBusca!: string; fechaBusca!: Date; fechaMaxima = new Date(); tipoBusca!: number;
@@ -71,7 +71,7 @@ export class TurnosAltasComponent implements OnInit {
   turnoSeleccionado: number = -1; turnoRojo: number = -1; selectedRows: number[] = []; selectedRojo: number[] = [];
 
 
-  constructor(
+  constructor(  private router: Router,
     private sMedico: MedicoService,
     private sPaciente: PacienteService,
     private sTurno: TurnoService,
@@ -113,6 +113,8 @@ export class TurnosAltasComponent implements OnInit {
     this.cargaMedico();
     this.cargaPaciente();
     this.cargaTurno();
+    this.actualizarItemsMostrados();
+    this.cargarLastTurno();
     this.dtOptions = {
       // language:{ url 'cdn'  }
       pageLength: 10,
@@ -121,6 +123,47 @@ export class TurnosAltasComponent implements OnInit {
     }
   }
 
+  cambiarFecha2(fecha: Date) {  this.fecha = fecha;}
+
+  cargarLastTurno (){
+    var ii = -1;
+    let maxx = 0;
+    this.sTurno.getLastTurno().subscribe(
+      (result: any) => {
+        maxx = result.length; console.log("lenght:" + maxx);
+        ii++;
+        this.turno = new Turno();
+        Object.assign(this.turno, result);
+        this.idTurno = this.turno._id.toString();
+        console.log("Ultimo_turno ID:::" + this.turno._id.toString());
+        console.log("FECHA:::" + this.turno.fechaturno);
+        console.log("ENFERMEDAD:::" + this.turno.enfermedad);
+        console.log("SALA::" + this.turno.sala);
+        console.log("Ultimo_Turno_Correcto");
+    
+       let fechaElegida = new Date(this.turno.fechaturno);
+        fechaElegida.setDate(fechaElegida.getDate() );
+        fechaElegida.setHours(fechaElegida.getHours() ); 
+        fechaElegida.setMinutes(0); fechaElegida.setSeconds(0); fechaElegida.setMilliseconds(0);
+  
+        this.estadoTurno=this.turno.estado.toString();
+        this.sala = this.turno.sala.toString();
+        this.enfermedad = this.turno.enfermedad.toString();
+        this.pagado=this.turno.pagado;
+        this.precio=this.turno.precio;
+        this.tipoPago=this.turno.tipoPago.toString();
+        this.hhora=fechaElegida.getHours();
+        this.cambiarFecha2 (fechaElegida);
+        this.idMedico=this.turno.medico.toString();
+        this.idPaciente= this.turno.paciente.toString();
+      }
+    )
+ } 
+
+
+  iraModifica():void{
+     this.router.navigateByUrl('/modibajaturnos');
+  }
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -1031,6 +1074,8 @@ export class TurnosAltasComponent implements OnInit {
       (data:any) => {
         console.log(data);
         this.preferenceId = data.init_point;
+        console.log(this.preferenceId);
+            
         this.showPaymentButton = true;
       },
       (err:any) => {

@@ -61,7 +61,7 @@ export class TurnosModBajaComponent {
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   apel!: String; ddni!: String; docu!: Number; idMedico!: string; idTurno!: string; ordenMedico!: number;
   apelPaciente!: String; docuPaciente!: Number; idPaciente!: string; ordenPaciente!: number; cadID = "";
-  fecha!: Date; fechaMinima = new Date(); selectFecha = new Date(); sala!: string; pagado!: boolean; saberTitulo = "__";
+  fecha:Date =new Date(); fechaMinima = new Date(); selectFecha = new Date(); sala!: string; pagado!: boolean; saberTitulo = "__";
   estadoTurno!: string; enfermedad!: string; tipoPago: string = "pami"; precio: Number = 1; hhora = 8; cadInfo = "";
   dniBusca!: Number; apellidoBusca!: string; fechaBusca!: Date; fechaMaxima = new Date(); tipoBusca!: number;
   apMedico!: String; dniMedico!: Number; apPaciente!: String; dniPaciente!: Number;  lastfila = "__";  azulrojo = "xx";
@@ -117,7 +117,8 @@ export class TurnosModBajaComponent {
     this.cargaMedico();
     this.cargaPaciente();
     this.cargaTurno();
-
+    this.actualizarItemsMostrados();
+    this.cargarLastTurno (); 
     this.dtOptions = {
       // language:{ url 'cdn'  }
       pageLength: 10,
@@ -126,7 +127,44 @@ export class TurnosModBajaComponent {
     }
   }
 
- 
+  cambiarFecha2(fecha: Date) {  this.fecha = fecha;}
+
+  
+  cargarLastTurno (){
+     var ii = -1;
+     let maxx = 0;
+     this.sTurno.getLastTurno().subscribe(
+       (result: any) => {
+         maxx = result.length; console.log("lenght:" + maxx);
+         ii++;
+         this.turno = new Turno();
+         Object.assign(this.turno, result);
+         this.idTurno = this.turno._id.toString();
+         console.log("Ultimo_turno ID:::" + this.turno._id.toString());
+         console.log("FECHA:::" + this.turno.fechaturno);
+         console.log("ENFERMEDAD:::" + this.turno.enfermedad);
+         console.log("SALA::" + this.turno.sala);
+         console.log("Ultimo_Turno_Correcto");
+     
+        let fechaElegida = new Date(this.turno.fechaturno);
+         fechaElegida.setDate(fechaElegida.getDate() );
+         fechaElegida.setHours(fechaElegida.getHours() ); 
+         fechaElegida.setMinutes(0); fechaElegida.setSeconds(0); fechaElegida.setMilliseconds(0);
+   
+         this.estadoTurno=this.turno.estado.toString();
+         this.sala = this.turno.sala.toString();
+         this.enfermedad = this.turno.enfermedad.toString();
+         this.pagado=this.turno.pagado;
+         this.precio=this.turno.precio;
+         this.tipoPago=this.turno.tipoPago.toString();
+         this.hhora=fechaElegida.getHours();
+         this.cambiarFecha2 (fechaElegida);
+         this.idMedico=this.turno.medico.toString();
+         this.idPaciente= this.turno.paciente.toString();
+       }
+     )
+  } 
+
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -153,7 +191,8 @@ export class TurnosModBajaComponent {
     const inicio = this.paginaActual * this.pageSize;
     this.turnos = this.ttBusca22.slice(inicio, inicio + this.pageSize);
     this.turnosBusca = this.ttBusca22.slice(inicio, inicio + this.pageSize);
-       for (let i=0; i<this.pageSize; i++){    
+    let maxx1=this.turnosBusca.length
+       for (let i=0; i<maxx1; i++){    
        const resultado = this.arrayTurnos.find(turno => turno === this.turnosBusca[i]._id );
        if ( resultado){ 
           if( this.azulrojo == "azul"){   this.turnoSeleccionado = this.turnoSeleccionado === i ? -1 : i; }
@@ -617,12 +656,19 @@ export class TurnosModBajaComponent {
   selectTurno(index: number, iddT: string, pacc: Paciente, medi: Medico, fechaa: Date,
     salaa: String, enferr: String, pagadoo: boolean, precioo: Number, ttipo: String, esttado: String) {
     this.turnoSeleccionado = this.turnoSeleccionado === index ? -1 : index;
+    let fechaElegida = new Date(fechaa);
+    fechaElegida.setDate(fechaElegida.getDate() );
+    fechaElegida.setHours(fechaElegida.getHours() ); 
+    fechaElegida.setMinutes(0); fechaElegida.setSeconds(0); fechaElegida.setMilliseconds(0);
+
     let ApeMedico = this.buscaDatosMedico(medi);
     let ApePaciente = this.buscaDatosPaciente(pacc);
+     this.cambiarFecha2(fechaElegida);
+     this.hhora= fechaElegida.getHours();
+
     this.idTurno = iddT;
     this.idPaciente = pacc.toString();
     this.idMedico = medi.toString();
-    this.selectFecha = new Date(fechaa);
     this.sala = salaa.toString();
     this.enfermedad = enferr.toString();
     this.pagado = pagadoo;
@@ -634,6 +680,7 @@ export class TurnosModBajaComponent {
     console.log("ID_TURNO:::" + iddT + "__DNI MEDICO::" + this.docu + "__DNI PACIENTE::" + this.docuPaciente);
     alert("ID_TURNO:::" + iddT + "__DNI MEDICO::" + this.docu + "__DNI PACIENTE::" + this.docuPaciente);
   }
+
 
 
 

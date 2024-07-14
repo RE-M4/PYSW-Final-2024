@@ -18,6 +18,7 @@ import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 //import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
+//import html2pdf from 'html2pdf.js';
 
 
 @Component({
@@ -62,14 +63,14 @@ export class TurnosbajaComponent {
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   apel!: String; ddni!: String; docu!: Number; idMedico!: string; idTurno!: string; ordenMedico!: number;
   apelPaciente!: String; docuPaciente!: Number; idPaciente!: string; ordenPaciente!: number; cadID = "";
-  fecha!: Date; fechaMinima = new Date(); selectFecha = new Date(); sala!: string; pagado!: boolean; saberTitulo = "__";
+  fecha:Date =new Date(); fechaMinima = new Date(); selectFecha = new Date(); sala!: string; pagado!: boolean; saberTitulo = "__";
   estadoTurno!: string; enfermedad!: string; tipoPago: string = "pami"; precio: Number = 1; hhora = 8; cadInfo = "";
   dniBusca!: Number; apellidoBusca!: string; fechaBusca!: Date; fechaMaxima = new Date(); tipoBusca!: number;
   apMedico!: String; dniMedico!: Number; apPaciente!: String; dniPaciente!: Number;  lastfila = "__";  azulrojo = "xx";
   turnoSeleccionado: number = -1; turnoRojo: number = -1; turnoBlanco: number = -1;  borradosMuestra: string[] = [];
   selectedRows: number[]=[]; selectedRojo: number[] = [];  selectedBlanco: number[] = [];  scarga!: string; 
   paginaActual: number; pageSize: number; BuscaTTurno!: number; total!: number;  arrayTurnos: string[] = [];
-
+  borradosss2: string[] = [];
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -130,7 +131,44 @@ export class TurnosbajaComponent {
     }
   }
 
- 
+  cambiarFecha2(fecha: Date) {  this.fecha = fecha;}
+
+  
+  cargarLastTurno (){
+     var ii = -1;
+     let maxx = 0;
+     this.sTurno.getLastTurno().subscribe(
+       (result: any) => {
+         maxx = result.length; console.log("lenght:" + maxx);
+         ii++;
+         this.turno = new Turno();
+         Object.assign(this.turno, result);
+         this.idTurno = this.turno._id.toString();
+         console.log("Ultimo_turno ID:::" + this.turno._id.toString());
+         console.log("FECHA:::" + this.turno.fechaturno);
+         console.log("ENFERMEDAD:::" + this.turno.enfermedad);
+         console.log("SALA::" + this.turno.sala);
+         console.log("Ultimo_Turno_Correcto");
+     
+        let fechaElegida = new Date(this.turno.fechaturno);
+         fechaElegida.setDate(fechaElegida.getDate() );
+         fechaElegida.setHours(fechaElegida.getHours() ); 
+         fechaElegida.setMinutes(0); fechaElegida.setSeconds(0); fechaElegida.setMilliseconds(0);
+   
+         this.estadoTurno=this.turno.estado.toString();
+         this.sala = this.turno.sala.toString();
+         this.enfermedad = this.turno.enfermedad.toString();
+         this.pagado=this.turno.pagado;
+         this.precio=this.turno.precio;
+         this.tipoPago=this.turno.tipoPago.toString();
+         this.hhora=fechaElegida.getHours();
+         this.cambiarFecha2 (fechaElegida);
+         this.idMedico=this.turno.medico.toString();
+         this.idPaciente= this.turno.paciente.toString();
+       }
+     )
+  } 
+
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -251,23 +289,11 @@ export class TurnosbajaComponent {
   }
 
 
-  exportPDFDiv(): void {
-    const divToExport = document.getElementById('lastTurnoComprobante');
-    if (!divToExport) {
-      console.error('Div no encontrado en exportToPDF.');
-      return;
-    }
-    const doc = new jsPDF.default();
-    const htmlOptions = {
-      scale: 2, // Escala de la imagen a capturar (ajusta según necesidades)
-      useCORS: true // Permitir el uso de imágenes CORS
-    };
-    html2canvas(divToExport, htmlOptions).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const imgHeight = canvas.height * 210 / canvas.width; // Ajuste de la anchura de la imagen
-      doc.addImage(imgData, 0, 0, 210, imgHeight); // Añadir imagen al documento PDF
-      doc.save('documento.pdf');
-    });
+ 
+
+
+  exportPDF2(): void {
+     console.log("aqui se imprimia");
   }
 
   //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -729,7 +755,7 @@ export class TurnosbajaComponent {
         this.sTurno.deleteTurno(this.idTurno).subscribe(
           (result: any) => {
             this.saberTitulo = "¡¡¡¡¡ULTIMO TURNO BORRADO!!!!!";
-           
+            this.exportPDF2();
             this.mostrarLast();
             this.cargaTurno();
             alert("TURNO BORRADO CORRECTAMENTE");
@@ -760,7 +786,8 @@ export class TurnosbajaComponent {
        if (this.ttCancelados!=null){ 
       this.sTurno.updateEstadoCancelado(this.ttCancelados).subscribe(
         (result: any) => {
-           this.saberTitulo = "¡¡¡¡TURNOS EN ESTADO CANCELADO CORRECTAMENTE!!!!!";        
+           this.saberTitulo = "¡¡¡¡TURNOS EN ESTADO CANCELADO CORRECTAMENTE!!!!!";   
+           this.exportPDF2();  
            this.cargaTurno();
           console.log("CANCELADO varios Turnos"); alert("¡¡¡¡TURNOS EN ESTADO CANCELADO CORRECTAMENTE!!!!!");
           this.deshacerTTodos();
@@ -788,6 +815,7 @@ export class TurnosbajaComponent {
       this.sTurno.deleteMany(this.ttCancelados).subscribe(
         (result: any) => {
            this.saberTitulo = "¡¡¡¡TURNOS ELIMINADOS DEFINITIVAMENTE CORRECTA!!!!!";
+           this.exportPDF2();
            this.cargaTurno();
           console.log("ELIMINACION DEFINITIVA DE VARIOS TURNOS CORRECTA");
            alert("¡¡¡¡¡¡TURNOS ELIMINADOS DEFINITIVAMENTE CORRECTA!!!!!");
@@ -814,6 +842,7 @@ export class TurnosbajaComponent {
       this.sTurno.updateVVigencia(this.ttCancelados).subscribe(
         (result: any) => {
            this.saberTitulo = "¡¡¡¡TURNOS EN ESTADO VIGENTE CORRECTAMENTE!!!!!";        
+           this.exportPDF2();
            this.cargaTurno();
           console.log("VIGENCIA varios Turnos"); alert("¡¡¡¡TURNOS EN ESTADO VIGENTE CORRECTAMENTE!!!!!");
           this.deshacerTTodos();

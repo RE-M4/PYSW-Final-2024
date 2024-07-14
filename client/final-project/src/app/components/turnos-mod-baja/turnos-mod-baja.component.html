@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-12 bg-personalizado">
     <div>
-      <h1 class="fondo11">ARCHIVO TURNOS - MODIFICA / BAJA  </h1>
+      <h1 class="fondo11">ARCHIVO TURNOS - MODIFICA </h1>
     </div>
   </div>
 </div>
@@ -60,8 +60,10 @@
     <div class="grupo-input">
       <label for="fecha222" class="form-label">FECHA:: </label>
       <input class="textoSelect" type="date" id="fecha222" name="fecha222" [min]="fechaMinima.toISOString().split('T')[0]"
-        [(ngModel)]="fecha" required="true">
+        [ngModel]="fecha | date:'yyyy-MM-dd'"
+        (ngModelChange)="cambiarFecha2($event)" required="true">
     </div>
+
 
     <div class="grupo-input">
       <label for="hhora" class="form-label">HORA:: </label>

@@ -16,7 +16,7 @@ export class TurnoService {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': ''
+        'Authorization': 'Bearer APP_USR-4000912111218835-070815-58cdf8fecb6194e9a08ee0a011e8bd25-1890303345'
       })
     }
 

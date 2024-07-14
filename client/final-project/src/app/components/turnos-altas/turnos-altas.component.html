@@ -61,7 +61,8 @@
     <div class="grupo-input">
       <label for="fecha222" class="form-label">FECHA:: </label>
       <input class="textoSelect" type="date" id="fecha222" name="fecha222" [min]="fechaMinima.toISOString().split('T')[0]"
-        [(ngModel)]="fecha" required="true">
+        [ngModel]="fecha | date:'yyyy-MM-dd'"
+        (ngModelChange)="cambiarFecha2($event)" required="true">
     </div>
 
     <div class="grupo-input">
@@ -168,6 +169,9 @@
   <button type="submit" class="btn btn-primary" (click)="cargaTurno()">MOSTRAR TODOS LOS TURNO</button> 
   .....
   <button type="button" class="btn btn-dark" (click)="exportToExcel()">IMPRIMIR_EXCEL</button>
+  ....
+  <button type="button" class="btn btn-dark" (click)="iraModifica()">MODIFICAR ESTE ULTIMO TURNO GUARDADO</button>
+  
   .....
   <button type="button" class="btn btn-dark" (click)="exportToPDF()">EXPORTAR_PDF</button>
   .....
